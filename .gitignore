@@ -1,0 +1,27 @@
+# Local hosting, tools, and preview state
+.openai/
+.sites-local/
+.vercel/
+.codex/
+.agents/
+qa/
+
+# Dependencies and caches
+node_modules/
+.cache/
+__pycache__/
+
+# Local settings, logs, and temporary archives
+.env
+.env.*
+!.env.example
+*.local
+*.log
+*.tmp
+*.temp
+*.bak
+*.tar.gz
+*.tar
+*.zip
+.DS_Store
+Thumbs.db

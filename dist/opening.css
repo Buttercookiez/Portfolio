@@ -1,0 +1,9 @@
+.opening-screen{position:fixed;inset:0;z-index:1000;overflow:hidden;isolation:isolate;color:#f3f3f3;touch-action:none;overscroll-behavior:contain}
+.opening-shade{position:absolute;inset:0;background:#111;z-index:0;will-change:opacity}
+.opening-mark{position:fixed;display:inline-flex;align-items:center;white-space:nowrap;color:#f3f3f3;z-index:1;pointer-events:none;user-select:none;opacity:0;will-change:transform,opacity;transform-origin:0 0}
+.opening-base{display:inline-flex;align-items:center;white-space:nowrap}
+.opening-dot{will-change:transform,opacity}
+.opening-mark .wordmark-dot{margin-left:1px;color:inherit;font-weight:inherit}
+body.intro-active{overflow:hidden}
+body.intro-active .site-header .wordmark{visibility:hidden}
+@media(prefers-reduced-motion:reduce){.opening-screen{display:none}}
