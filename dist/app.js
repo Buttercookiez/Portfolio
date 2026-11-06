@@ -26,14 +26,26 @@
   let toastTimer = 0;
   let projectOpener = null;
 
+  // Lenis and GSAP must share wall-clock time after an interrupted frame.
+  if (gsap) gsap.ticker.lagSmoothing(0);
   if (gsap && ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
   function synchronizeScrollLock() {
-    const blocked = document.body.classList.contains('menu-open') || Boolean(dialog?.open);
+    const blocked = document.documentElement.classList.contains('ink-booting') ||
+      document.body.classList.contains('menu-open') || Boolean(dialog?.open);
     document.body.classList.toggle('dialog-open', Boolean(dialog?.open));
     if (blocked) lenis?.stop();
     else lenis?.start();
   }
+  addEventListener('ink:opening-start', synchronizeScrollLock);
+  addEventListener('ink:opening-complete', () => {
+    synchronizeScrollLock();
+    requestAnimationFrame(() => {
+      lenis?.resize();
+      ScrollTrigger?.refresh();
+      queueReading();
+    });
+  });
 
   function setMenu(open, restoreFocus = false) {
     const expanded = Boolean(open && mobile.matches);
@@ -139,10 +151,10 @@
       ScrollTrigger.batch('[data-reveal]', {
         start: 'top 96%',
         once: true,
-        onEnter: batch => gsap.fromTo(batch, { y: 20, opacity: 0 }, {
+        onEnter: batch => gsap.fromTo(batch, { y: 12, opacity: 0 }, {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.55,
           stagger: 0.07,
           ease: 'power2.out',
           clearProps: 'transform,opacity',

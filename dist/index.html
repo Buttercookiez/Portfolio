@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#141412">
+  <meta name="theme-color" content="#11120f">
   <meta name="description" content="John Francis Marabe. IT student and developer in the Philippines. A portfolio in ink, panels, and things built from curiosity.">
   <title>John Francis — The Origin Issue</title>
   <link rel="icon" href="favicon.ico?v=jf-2" sizes="16x16 32x32 48x48">
@@ -12,11 +12,15 @@
   <link rel="preload" href="vendor/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/ink-workshop.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="vendor/lenis.css">
-  <link rel="stylesheet" href="styles.css?v=ink-1">
+  <link rel="stylesheet" href="styles.css?v=living-1">
+  <link rel="stylesheet" href="living.css?v=living-1">
+  <link rel="stylesheet" href="ink-opening.css?v=living-1">
+  <script src="ink-opening.js?v=living-1"></script>
   <script defer src="vendor/gsap.min.js"></script>
   <script defer src="vendor/ScrollTrigger.min.js"></script>
   <script defer src="vendor/lenis.min.js"></script>
-  <script defer src="app.js?v=ink-1"></script>
+  <script defer src="app.js?v=living-1"></script>
+  <script defer src="living.js?v=living-1"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,6 +30,7 @@
       <span class="brand-monogram" aria-hidden="true">jf<span>.</span></span>
       <span class="brand-edition">PORTFOLIO<br>VOL. 01</span>
     </a>
+    <div class="chapter-bookmark" aria-hidden="true"><span class="bookmark-index">00</span><span class="bookmark-name">THE COVER</span></div>
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
       <a href="#work"><span class="nav-number" aria-hidden="true">01</span> Work</a>
       <a href="#about"><span class="nav-number" aria-hidden="true">02</span> About</a>
@@ -62,14 +67,15 @@
 
     <div class="chapter-rail" aria-hidden="true"><span class="rail-number">01</span><span>CURIOSITY IS THE FIRST LINE OF CODE.</span><span class="rail-mark">✳</span></div>
 
+    <div class="chapter-cut" data-chapter-cut data-next="paper" aria-hidden="true"><div class="cut-sticky"><div class="cut-shutter cut-shutter-left"></div><div class="cut-shutter cut-shutter-right"></div><div class="cut-caption"><span>CHAPTER 01</span><strong>FROM QUESTION TO CREATION.</strong></div><span class="cut-stroke"></span></div></div>
     <section class="work-section page-shell" id="work" aria-labelledby="work-title">
       <div class="section-heading" data-reveal>
         <div><p class="section-kicker">CHAPTER 01 / SELECTED WORK</p><h2 id="work-title">IDEAS, MADE REAL.</h2></div>
         <p class="section-side-note">Three projects.<br>Three different questions.</p>
       </div>
       <div class="project-grid">
-        <article class="project-card" data-reveal>
-          <div class="project-art art-herbal"><img class="art-herbal" src="assets/ink-herbal.webp" width="724" height="724" alt="" loading="lazy" decoding="async"><span class="panel-index">01</span></div>
+        <article class="project-card" data-reveal data-scene="herbal">
+          <div class="project-art art-herbal"><img class="art-herbal" src="assets/ink-herbal.webp" width="724" height="724" alt="" loading="lazy" decoding="async"><span class="panel-index">01</span><svg class="art-effects" viewBox="0 0 64 64" aria-hidden="true"><g class="leaf-actor" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 50C17 30 24 15 49 12c0 25-12 38-32 38Z" fill="#2a3024"/><path d="m17 50 28-32M26 40l-1-14m9 6 12-1"/><path d="m19 51-5 6" stroke="#d67256"/></g></svg><button class="art-interact" type="button" aria-label="Animate the Hanap Medisina illustration" aria-pressed="false"><span class="awaken-icon" aria-hidden="true">✦</span><span>AWAKEN PANEL</span></button></div>
           <div class="project-body">
             <p class="project-type">MOBILE / PLANT RECOGNITION</p>
             <h3>Hanap Medisina</h3>
@@ -78,8 +84,8 @@
             <div class="project-links"><a class="project-visit" href="https://hanap-medsesinav2.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Hanap Medisina website (opens in a new tab)">Explore project <span aria-hidden="true">↗</span></a><button class="project-details" type="button" data-project="herbal" aria-label="Read details about Hanap Medisina">Details <span aria-hidden="true">+</span></button></div>
           </div>
         </article>
-        <article class="project-card" data-reveal>
-          <div class="project-art art-koki"><img class="art-koki" src="assets/ink-koki.webp" width="724" height="724" alt="" loading="lazy" decoding="async"><span class="panel-index">02</span></div>
+        <article class="project-card" data-reveal data-scene="koki">
+          <div class="project-art art-koki"><img class="art-koki" src="assets/ink-koki.webp" width="724" height="724" alt="" loading="lazy" decoding="async"><span class="panel-index">02</span><svg class="art-effects" viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="8" width="33" height="48" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><g class="screen-actor"><path d="M22 15h21v17H22z" fill="#d67256"/><path d="m26 27 6-6 4 4 5-6" fill="none" stroke="#11120f" stroke-width="2"/></g><path d="M23 43h10m-5-5v10" stroke="currentColor" stroke-width="2"/><circle cx="41" cy="44" r="3" fill="currentColor"/></svg><button class="art-interact" type="button" aria-label="Animate the Koki Emulator illustration" aria-pressed="false"><span class="awaken-icon" aria-hidden="true">✦</span><span>AWAKEN PANEL</span></button></div>
           <div class="project-body">
             <p class="project-type">APPLICATION / GAME LIBRARY</p>
             <h3>Koki Emulator</h3>
@@ -88,8 +94,8 @@
             <div class="project-links"><a class="project-visit" href="https://koki-emulator09.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Koki Emulator website (opens in a new tab)">Explore project <span aria-hidden="true">↗</span></a><button class="project-details" type="button" data-project="koki" aria-label="Read details about Koki Emulator">Details <span aria-hidden="true">+</span></button></div>
           </div>
         </article>
-        <article class="project-card" data-reveal>
-          <div class="project-art art-monovault"><img class="art-monovault" src="assets/ink-monovault.webp" width="724" height="724" alt="" loading="lazy" decoding="async"><span class="panel-index">03</span></div>
+        <article class="project-card" data-reveal data-scene="monovault">
+          <div class="project-art art-monovault"><img class="art-monovault" src="assets/ink-monovault.webp" width="724" height="724" alt="" loading="lazy" decoding="async"><span class="panel-index">03</span><svg class="art-effects" viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><g class="vault-actor" fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="15"/><path d="M32 17v30M17 32h30m-26-11 22 22m-22 0 22-22"/><circle cx="32" cy="32" r="4" fill="#d67256"/></g></svg><button class="art-interact" type="button" aria-label="Animate the Monovault illustration" aria-pressed="false"><span class="awaken-icon" aria-hidden="true">✦</span><span>AWAKEN PANEL</span></button></div>
           <div class="project-body">
             <p class="project-type">MOBILE / PERSONAL SECURITY</p>
             <h3>Monovault</h3>
@@ -101,6 +107,7 @@
       </div>
     </section>
 
+    <div class="chapter-cut" data-chapter-cut data-next="ink" aria-hidden="true"><div class="cut-sticky"><div class="cut-shutter cut-shutter-left"></div><div class="cut-shutter cut-shutter-right"></div><div class="cut-caption"><span>CHAPTER 02</span><strong>THE PERSON BEHIND THE PANELS.</strong></div><span class="cut-stroke"></span></div></div>
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="page-shell about-grid">
         <div class="about-heading" data-reveal><p class="section-kicker">CHAPTER 02 / THE PERSON</p><h2 id="about-title">STILL LEARNING.<br><em>ALWAYS BUILDING.</em></h2></div>
@@ -118,6 +125,7 @@
       </div>
     </section>
 
+    <div class="chapter-cut" data-chapter-cut data-next="ink" aria-hidden="true"><div class="cut-sticky"><div class="cut-shutter cut-shutter-left"></div><div class="cut-shutter cut-shutter-right"></div><div class="cut-caption"><span>CHAPTER 03</span><strong>THE NEXT CHAPTER IS OURS.</strong></div><span class="cut-stroke"></span></div></div>
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
       <div class="page-shell">
         <p class="section-kicker" data-reveal>CHAPTER 03 / THE NEXT CHAPTER</p>

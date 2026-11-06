@@ -1,0 +1,38 @@
+/* The fallback is installed before the body exists and disappears on every exit. */
+html.ink-booting,html.ink-booting body{overflow:hidden}
+html.ink-booting::after{content:'';position:fixed;inset:0;background:#0c0c0b;z-index:180;pointer-events:auto}
+html.ink-booting.ink-revealing::after{display:none}
+.ink-opening{position:fixed;inset:0;z-index:190;display:grid;place-items:center;overflow:hidden;isolation:isolate;color:#e8dfcb;touch-action:none;overscroll-behavior:contain}
+.ink-opening-curtain{position:absolute;inset:-2px;background:#0c0c0b;z-index:0;will-change:transform;backface-visibility:hidden}
+.ink-opening-curtain::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(144deg,transparent 0 85px,#e8dfcb06 86px 87px,transparent 88px 170px);pointer-events:none}
+.ink-opening-curtain--left{clip-path:polygon(0 0,100% 0,0 100%)}
+.ink-opening-curtain--right{clip-path:polygon(100% 0,100% 100%,0 100%)}
+.ink-opening-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;width:260px;transform:rotate(-1deg);padding:20px 0;animation:ink-opening-arrive .3s ease-out both}
+.ink-opening-eyebrow{font:10px/1.4 'Courier New',monospace;letter-spacing:.24em;margin:0 0 30px;color:#d0c6b1}
+.ink-opening-emblem{width:224px;height:174px;position:relative}
+.ink-opening-frame{position:absolute;inset:0;width:100%;height:100%;stroke:#8d826c;stroke-width:1;stroke-linecap:square;animation:ink-opening-frame .45s ease-out both}
+.ink-opening-frame .ink-opening-frame-scar{stroke:#a63a2f;stroke-width:2}
+.ink-opening-mark{position:absolute;inset:20px 20px 30px;width:184px;height:138px;overflow:visible;stroke:#e8dfcb;stroke-width:10;stroke-linecap:square;stroke-linejoin:miter}
+.ink-opening-j,.ink-opening-f{stroke-dasharray:1;stroke-dashoffset:1;animation:ink-opening-draw .72s cubic-bezier(.32,.02,.16,1) forwards}
+.ink-opening-f{animation-delay:.16s;animation-duration:.68s}
+.ink-opening-period{stroke:#bb4b3b;stroke-linecap:round;stroke-width:10;opacity:0;animation:ink-opening-period .15s ease-out .72s forwards}
+.ink-opening-seal{position:absolute;right:-26px;bottom:-11px;padding:8px 11px 7px;border:2px solid #ae4435;color:#c45746;font:800 23px/1 var(--display,Impact,'Arial Narrow',sans-serif);letter-spacing:.07em;transform:rotate(-12deg);opacity:0;animation:ink-opening-stamp .27s cubic-bezier(.19,.7,.29,1.2) .72s forwards}
+.ink-opening-seal::after{content:'';position:absolute;inset:3px;border:1px solid #ae443555;pointer-events:none}
+.ink-opening-rule{width:112px;height:1px;background:#514c40;margin-top:36px;overflow:hidden;transform:rotate(-1deg)}
+.ink-opening-rule>span{display:block;width:100%;height:100%;background:#b84a39;transform:scaleX(.06);transform-origin:left;transition:transform .36s ease-out}
+.ink-opening[data-ready='true'] .ink-opening-rule>span{transform:scaleX(1)}
+.ink-opening-note{margin:15px 0 0;font:8px/1.5 'Courier New',monospace;letter-spacing:.09em;color:#aaa08b}
+.ink-opening[data-phase='revealing'] .ink-opening-content{animation:ink-opening-content-out .27s ease-in both}
+.ink-opening[data-phase='revealing'] .ink-opening-curtain--left{animation:ink-opening-shutter-left .8s cubic-bezier(.76,0,.2,1) .04s both}
+.ink-opening[data-phase='revealing'] .ink-opening-curtain--right{animation:ink-opening-shutter-right .8s cubic-bezier(.76,0,.2,1) .04s both}
+@keyframes ink-opening-arrive{from{opacity:0;transform:translateY(8px) rotate(-1deg)}to{opacity:1;transform:translateY(0) rotate(-1deg)}}
+@keyframes ink-opening-frame{from{opacity:0;transform:scale(.96) rotate(2deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes ink-opening-draw{to{stroke-dashoffset:0}}
+@keyframes ink-opening-period{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ink-opening-stamp{from{opacity:0;transform:scale(1.28) rotate(-19deg)}to{opacity:1;transform:scale(1) rotate(-12deg)}}
+@keyframes ink-opening-content-out{to{opacity:0;transform:translateY(-12px) rotate(-3deg)}}
+@keyframes ink-opening-shutter-left{to{transform:translate(-76%,-76%)}}
+@keyframes ink-opening-shutter-right{to{transform:translate(76%,76%)}}
+@media(max-width:600px){.ink-opening-content{width:240px}.ink-opening-emblem{width:204px;height:160px}.ink-opening-mark{inset:17px 13px 25px}.ink-opening-seal{right:-11px;font-size:21px}.ink-opening-eyebrow{font-size:9px;margin-bottom:26px}.ink-opening-note{font-size:7px}}
+@media(prefers-reduced-motion:reduce){html.ink-booting::after,.ink-opening{display:none!important}html.ink-booting,html.ink-booting body{overflow:visible}.ink-opening *{animation:none!important;transition:none!important}}
+@media print{html.ink-booting::after,.ink-opening{display:none!important}}
