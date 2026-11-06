@@ -8,3 +8,4 @@ These pinned assets are served locally; the portfolio does not need third-party 
 - **Instrument Serif** — Google Fonts Latin subsets, normal and italic, weight 400. SIL Open Font License 1.1; see OFL-Instrument-Serif.txt. Sources: https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-6zUTjg.woff2 and https://fonts.gstatic.com/s/instrumentserif/v5/jizHRFtNs2ka5fXjeivQ4LroWlx-6zAjjH7M.woff2.
 
 Downloaded October 30, 2026. Font filenames are shortened locally for clarity. JavaScript source-map comments refer to optional development maps, which are not needed to run the site.
+- **Barlow Condensed ExtraBold** — Jeremy Tribby / Google Fonts, SIL Open Font License 1.1; see OFL-Barlow-Condensed.txt. Source: https://github.com/google/fonts/tree/main/ofl/barlowcondensed. Downloaded November 6, 2026.
