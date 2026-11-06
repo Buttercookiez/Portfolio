@@ -1,10 +1,8 @@
-# John Francis — The Origin Issue
+# John Francis — One Panel at a Time
 
-A developer portfolio told as an ink-and-paper comic. Bold chapter headings, angular panels, original illustrations, and a restrained red accent frame the story: curiosity, selected work, the person, and the next chapter.
+A minimalist developer portfolio that unfolds in six scenes: introduction, Hanap Medisina, Koki Emulator, Monovault, about, and contact. Dark ink, quiet space, and original manga illustrations carry the story. Information appears one piece at a time as the reader scrolls.
 
-The Living Manga edition pairs a darker cover and ink chapters with light project pages. A drawn JF mark and red issue stamp open through diagonal shutters. Natural scrolling controls the split chapter gutters, angled artwork reveals, and gentle illustration depth. Project sigils respond to hover or the “Awaken panel” button; their animation stops outside the viewport and in hidden tabs.
-
-The opening waits for the cover artwork and fonts, has a short readiness deadline and a 4.5-second safety exit, and releases immediately on keyboard interruption, resize, or reduced motion. The layout adapts to mobile with native touch scrolling. The operating system’s reduced-motion preference removes decorative movement. Project websites, source repositories, contact information, and the downloadable résumé remain easy to reach.
+GSAP ScrollTrigger controls the illustrated panel transitions and staged text. Lenis smooths desktop wheel scrolling, while touch scrolling stays native. A small scene counter tracks the reading position. Reduced motion, short screens, or unavailable animation libraries use a readable document layout. The JF ink-and-stamp opening remains bounded and can release immediately on keyboard interruption or resize.
 
 ## Preview
 
@@ -37,17 +35,16 @@ Vercel serves the existing `dist` files directly.
 2. [Koki Emulator](https://koki-emulator09.vercel.app/): a simple interface for a game library.
 3. [Monovault](https://monovault.vercel.app/): an offline, encrypted home for personal information.
 
-Each project’s Details button opens field notes with its website and GitHub source links.
+Each project has its own scene. The Visit project link opens its website; Details opens project notes with both the website and GitHub source. The résumé is available from the header.
 
 ## Active source
 
-- `dist/index.html`: semantic chapters, navigation, project links, contact actions, and project dialog.
-- `dist/styles.css`: comic-panel layout, responsive typography, ink texture, mobile navigation, and accessible focus states.
-- `dist/app.js`: scrolling, panel reveals, navigation, project dialogs, and email copying.
-- `dist/ink-opening.js` and `ink-opening.css`: the bounded JF ink-and-stamp opening and diagonal shutters.
-- `dist/living.js` and `living.css`: scroll-driven chapter cuts, artwork depth, and activated project sigils.
-- `dist/assets/ink-workshop.webp`: cover artwork.
-- `dist/assets/ink-herbal.webp`, `ink-koki.webp`, and `ink-monovault.webp`: illustrated project panels.
+- `dist/index.html`: six semantic scenes, concise content, navigation, project links, and the project dialog.
+- `dist/styles.css`: minimalist scene layout, responsive typography, mobile navigation, and focus states.
+- `dist/app.js`: GSAP scene timelines, Lenis integration, navigation, project dialogs, and email copying.
+- `dist/ink-opening.js` and `ink-opening.css`: the JF ink-and-stamp opening and diagonal shutters.
+- `dist/assets/ink-workshop.webp`: introductory artwork.
+- `dist/assets/ink-herbal.webp`, `ink-koki.webp`, and `ink-monovault.webp`: individual project illustrations.
 - `dist/assets/favicon.svg` and `dist/favicon.ico`: the JF browser-tab monogram.
 - `dist/assets/JohnFrancisMarabeResume.docx`: the original supplied résumé.
 - `dist/vendor`: local fonts, animation libraries, and license files.
