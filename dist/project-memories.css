@@ -1,5 +1,5 @@
-/* Three full-size plates share the same image coordinates. Their small overlaps
-   keep diagonal joins invisible once the plates settle into place. */
+/* The plates share image coordinates and overlap slightly to hide the joins
+   when they settle into a single preview. */
 .project-memory {
   position: relative;
   aspect-ratio: 1265 / 712;
@@ -21,6 +21,7 @@
   position: absolute;
   inset: 0;
   transform-origin: center;
+  backface-visibility: hidden;
 }
 
 .project-scene .scene-art .memory-slice > img {
@@ -62,6 +63,33 @@
 .story-enhanced .memory-slice:nth-child(3) {
   clip-path: polygon(70% 0, 100% 0, 100% 100%, 61% 100%);
   transform-origin: 83% 50%;
+}
+
+.story-enhanced #koki .memory-slice:nth-child(1) {
+  clip-path: polygon(0 0, 28.6% 0, 36.6% 100%, 0 100%);
+}
+
+.story-enhanced #koki .memory-slice:nth-child(2) {
+  clip-path: polygon(28% 0, 61.6% 0, 70.6% 100%, 36% 100%);
+}
+
+.story-enhanced #koki .memory-slice:nth-child(3) {
+  clip-path: polygon(61% 0, 100% 0, 100% 100%, 70% 100%);
+}
+
+.story-enhanced #monovault .memory-slice:nth-child(1) {
+  clip-path: polygon(0 0, 100% 0, 100% 31.6%, 0 37.6%);
+  transform-origin: 50% 17%;
+}
+
+.story-enhanced #monovault .memory-slice:nth-child(2) {
+  clip-path: polygon(0 37%, 100% 31%, 100% 62.6%, 0 69.6%);
+  transform-origin: 50% 50%;
+}
+
+.story-enhanced #monovault .memory-slice:nth-child(3) {
+  clip-path: polygon(0 69%, 100% 62%, 100% 100%, 0 100%);
+  transform-origin: 50% 83%;
 }
 
 .story-enhanced .memory-register {

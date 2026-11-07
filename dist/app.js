@@ -225,48 +225,86 @@
       { yPercent: 0, opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: .17, ease: 'power3.out' }, .77);
   }
 
-  function revealTitle(timeline, title, start = titleRevealStart) {
+  function revealTitle(timeline, title, start = titleRevealStart, entrance = null) {
     const lines = title?.matches('.kinetic-heading,.kinetic-name') ? $$('[data-split]', title) : [];
     if (!lines.length) {
       revealInk(timeline, title, start, .17);
       return;
     }
+    const entryPose = entrance?.title || { yPercent: 90, rotationX: 30 };
     lines.forEach((line, index) => {
-      timeline.fromTo($$('.type-char', line),
-        { yPercent: 105, rotationX: 35, opacity: 0, transformPerspective: 700, transformOrigin: '50% 100%' },
-        { yPercent: 0, rotationX: 0, opacity: 1, duration: .15, stagger: { amount: .065 }, ease: 'power3.out' },
-        start + index * .045);
+      timeline.fromTo($$('.type-char', line), {
+        ...entryPose, opacity: 0, transformPerspective: 700, transformOrigin: '50% 100%'
+      }, {
+        xPercent: 0, yPercent: 0, rotationX: 0, rotationY: 0, opacity: 1,
+        duration: .16, stagger: { amount: .055, from: entrance?.order || 'start' }, ease: 'power3.out'
+      }, start + index * .035);
     });
   }
 
-  function assembleProject(timeline, memory, direction) {
+  const projectEntrances = {
+    herbal: {
+      title: { xPercent: -75, rotationY: -24 },
+      order: 'start',
+      slices: [
+        { xPercent: -21, yPercent: 7, rotation: -4 },
+        { xPercent: -16, yPercent: -6, rotation: 3 },
+        { xPercent: -25, yPercent: 10, rotation: -5 }
+      ],
+      register: { xPercent: -7 }
+    },
+    koki: {
+      title: { xPercent: 70, rotationY: 24 },
+      order: 'end',
+      slices: [
+        { xPercent: 22, yPercent: -10, rotation: -5 },
+        { xPercent: 14, yPercent: 8, rotation: 4 },
+        { xPercent: 21, yPercent: -7, rotation: 5 }
+      ],
+      register: { xPercent: 7 }
+    },
+    monovault: {
+      title: { yPercent: 90, rotationX: 28 },
+      order: 'center',
+      slices: [
+        { yPercent: 18, rotationX: 19 },
+        { yPercent: 25, rotationX: 24 },
+        { yPercent: 34, rotationX: 29 }
+      ],
+      register: { yPercent: 7 }
+    }
+  };
+
+  function assembleProject(timeline, memory, entrance) {
     const slices = $$('.memory-slice', memory);
-    const entrances = [
-      { xPercent: -12 * direction, yPercent: 17, rotation: -6 * direction },
-      { xPercent: 1 * direction, yPercent: -23, rotation: 4 * direction },
-      { xPercent: 11 * direction, yPercent: 15, rotation: 7 * direction }
-    ];
     slices.forEach((slice, index) => {
-      timeline.fromTo(slice, { ...entrances[index], opacity: 0 },
-        { xPercent: 0, yPercent: 0, rotation: 0, opacity: 1, duration: .23, ease: 'power3.out' },
-        .26 + index * .054);
+      const order = entrance.order === 'end' ? slices.length - 1 - index : index;
+      timeline.fromTo(slice, {
+        ...entrance.slices[index], opacity: 0, transformPerspective: 750
+      }, {
+        xPercent: 0, yPercent: 0, rotation: 0, rotationX: 0, opacity: 1, duration: .29, ease: 'power2.out'
+      }, .12 + order * .052);
     });
 
     const register = $('.memory-register', memory);
     timeline.fromTo(register,
-      { opacity: 0, scale: 1.09, xPercent: 4 * direction },
-      { opacity: .78, scale: 1, xPercent: 0, duration: .12, ease: 'power2.out' }, .19);
-    timeline.to(register, { opacity: 0, duration: .19, ease: 'power1.in' }, .40);
+      { ...entrance.register, opacity: 0, scale: 1.08 },
+      { xPercent: 0, yPercent: 0, opacity: .65, scale: 1, duration: .13, ease: 'power2.out' }, .11);
+    timeline.to(register, { opacity: 0, duration: .22, ease: 'power1.in' }, .32);
     timeline.fromTo(memory, { '--frame-opacity': 0 },
-      { '--frame-opacity': 1, duration: .15 }, .46);
+      { '--frame-opacity': 1, duration: .16 }, .36);
     timeline.fromTo(memory.previousElementSibling,
       { opacity: 0, y: -8 },
-      { opacity: 1, y: 0, duration: .14, ease: 'power2.out' }, .46);
+      { opacity: 1, y: 0, duration: .15, ease: 'power2.out' }, .37);
+    // Replace the aligned fragments with one image to avoid seams at small sizes.
+    timeline.set(slices[0], { clipPath: 'none' }, .525);
+    timeline.set(slices.slice(1), { visibility: 'hidden' }, .525);
   }
 
   function createSceneTimeline(scene, index) {
     const intro = index === 0;
     const memory = $('.project-memory', scene);
+    const entrance = projectEntrances[scene.dataset.projectScene];
     const title = $('.scene-title', scene);
     const kicker = $('.scene-kicker', scene);
     const description = $('.scene-description', scene);
@@ -292,13 +330,13 @@
       animatePrelude(timeline, scene);
       if (cue) timeline.to(cue, { opacity: 0, y: -5, duration: .08 }, .035);
     } else {
-      revealInk(timeline, kicker, memory ? .23 : .03, .12);
-      revealTitle(timeline, title, memory ? .30 : titleRevealStart);
-      revealInk(timeline, description, memory ? .42 : .29, .15);
-      revealInk(timeline, actions, memory ? .50 : .44, .14);
-      revealInk(timeline, note, memory ? .55 : .54, .1);
+      revealInk(timeline, kicker, memory ? .14 : .03, .12);
+      revealTitle(timeline, title, memory ? .19 : titleRevealStart, entrance);
+      revealInk(timeline, description, memory ? .32 : .29, .15);
+      revealInk(timeline, actions, memory ? .41 : .44, .14);
+      revealInk(timeline, note, memory ? .47 : .54, .1);
       if (surname) revealInk(timeline, surname, .06, .12);
-      if (memory) assembleProject(timeline, memory, index === 3 ? -1 : 1);
+      if (memory && entrance) assembleProject(timeline, memory, entrance);
       if (mark) timeline.fromTo(mark, { opacity: 0, x: 22 }, { opacity: .12, x: 0, duration: .35 }, .08);
     }
     if (line) timeline.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: .8 }, .02);

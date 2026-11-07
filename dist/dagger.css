@@ -67,26 +67,28 @@ body.story-enhanced .dagger-stage.has-dagger {
   filter: brightness(1.45);
 }
 
-/* The bevel remains visible. Only the inset facet carries the project image. */
+/* Keep the bevel in view so the footage reads as light caught in the steel. */
 .dagger-memories {
-  inset: 29.35% 29.65% 4.05% 30.8%;
-  clip-path: polygon(0 0, 100% 1%, 92% 43%, 80% 67%, 48% 100%, 15% 69%, 5% 39%);
-  mask-image: linear-gradient(180deg, transparent, #000 12% 71%, transparent 96%);
+  inset: 29.4% 29.9% 4.7% 31%;
+  clip-path: polygon(0 0, 100% 1%, 91% 43%, 80% 66%, 48% 100%, 15% 69%, 5% 39%);
+  mask-image: linear-gradient(180deg, transparent, #000 9% 74%, transparent 98%);
 }
 
 .dagger-memory-plate {
   opacity: 0;
-  background: #4a6160;
+  background: linear-gradient(165deg, #4f6265, #9b8b64 58%, #40575b);
 }
 
-.dagger-memory-plate img {
+.dagger-memory-video {
   position: absolute;
-  inset: 7% 0 auto;
+  inset: 4% 0 auto;
+  display: block;
   width: 100%;
-  height: 66%;
-  object-fit: fill;
-  mask-image: linear-gradient(transparent, #000 12% 76%, transparent);
-  filter: saturate(.68) contrast(1.12) brightness(1.12);
+  height: 74%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  mask-image: linear-gradient(transparent, #000 12% 75%, transparent);
+  filter: saturate(.9) contrast(1.07) brightness(1.15);
 }
 
 .dagger-memory-plate::after {
@@ -94,8 +96,8 @@ body.story-enhanced .dagger-stage.has-dagger {
   inset: 0;
   content: "";
   background:
-    linear-gradient(90deg, #f3d99bbb, transparent 12% 82%, #f5e1ab98),
-    linear-gradient(163deg, transparent 29%, #fef8db85 30%, #e6f1dc30 31%, transparent 34% 68%, #e6f1dc55 70%, transparent 75%);
+    linear-gradient(90deg, #f0d49ca0, transparent 9% 86%, #f5e1ab8a),
+    linear-gradient(163deg, transparent 21%, #fef8db60 22%, #e6f1dc15 23%, transparent 25% 69%, #e6f1dc55 70%, transparent 74%);
 }
 
 .dagger-ground {
