@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 760" fill="none" class="dagger-svg" aria-hidden="true" focusable="false"><defs>
+  <linearGradient id="pd-steel-left" x1="0" x2="1"><stop stop-color="#26363e"/><stop offset=".42" stop-color="#778c91"/><stop offset=".68" stop-color="#bdc8c7"/><stop offset="1" stop-color="#526970"/></linearGradient>
+  <linearGradient id="pd-steel-right" x1="0" x2="1"><stop stop-color="#d5dfdb"/><stop offset=".2" stop-color="#8eaaae"/><stop offset=".65" stop-color="#d8dfd7"/><stop offset="1" stop-color="#617b84"/></linearGradient>
+  <linearGradient id="pd-edge" x1="0" x2="1"><stop stop-color="#e1e5d7"/><stop offset=".45" stop-color="#8faaa9"/><stop offset="1" stop-color="#dce4d9"/></linearGradient>
+  <linearGradient id="pd-bronze" x1="0" x2="1"><stop stop-color="#293432"/><stop offset=".23" stop-color="#998969"/><stop offset=".49" stop-color="#c1b18b"/><stop offset=".7" stop-color="#716c56"/><stop offset="1" stop-color="#303d3c"/></linearGradient>
+  <linearGradient id="pd-leather" x1="0" x2="1"><stop stop-color="#101b20"/><stop offset=".28" stop-color="#3b3d32"/><stop offset=".57" stop-color="#575244"/><stop offset=".85" stop-color="#263036"/><stop offset="1" stop-color="#111f25"/></linearGradient>
+  <linearGradient id="pd-sheen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8ece1" stop-opacity="0"/><stop offset=".48" stop-color="#f5f4e6" stop-opacity=".15"/><stop offset=".55" stop-color="#f5f4e6" stop-opacity=".6"/><stop offset=".62" stop-color="#f5f4e6" stop-opacity="0"/></linearGradient>
+  <clipPath id="pd-blade-clip"><path d="M83 229H157L150 573 120 721 90 573Z"/></clipPath>
+  <clipPath id="pd-memory-clip"><path d="M92 251H148L143 567 120 687 97 567Z"/></clipPath>
+</defs><g class="dagger-blade">
+  <path d="M79 218H161L154 583 120 739 86 583Z" fill="#192c33" stroke="#718c8e" stroke-width="1.6"/>
+  <path d="M83 224H120V728L91 580Z" fill="url(#pd-steel-left)"/>
+  <path d="M120 224H157L149 580 120 728Z" fill="url(#pd-steel-right)"/>
+  <path d="M83 225 91 580 120 729 86 582 79 220Z" fill="url(#pd-edge)" opacity=".85"/>
+  <path d="M157 225 149 580 120 729 154 582 161 220Z" fill="#dbe4dc" opacity=".72"/>
+  <path d="M120 228V720" stroke="#e3e8db" stroke-width="1" opacity=".42"/>
+  <path d="m99 337 4 47m-1 30 3 15m32-109-2 54m-2 44 2 19m-29 65 4 42m25-29-2 29m-15 35 1 48" fill="none" stroke="#e5e8db" stroke-width=".55" opacity=".25"/>
+</g><g class="blade-engraving" fill="none" stroke="#33494c" opacity=".8">
+  <path d="M104 275h12v20c0 9-11 10-12 2m22 7v-29h13m-13 13h10" stroke-width="2.2"/>
+  <path d="M105 316h30m-26 5h22" stroke-width=".7"/>
+</g><g class="dagger-hilt">
+  <path d="M104 27 100 48 102 172 98 197H142L138 172 140 48 136 27Z" fill="url(#pd-leather)" stroke="#17262b" stroke-width="2"/>
+  <g fill="none" stroke="#a49979" stroke-width="1.2" opacity=".45">
+    <path d="m101 49 37 14m-37 5 37 14m-36 5 36 14m-36 5 36 14m-36 5 36 14m-36 5 36 14m-36 5 36 14m-37 5 38 14"/>
+  </g>
+  <path d="M106 39 108 183M135 41l-3 141" fill="none" stroke="#d2c4a4" stroke-width=".8" opacity=".28"/>
+  <path d="M98 177H142L146 197H94Z" fill="url(#pd-bronze)" stroke="#243332" stroke-width="1.5"/>
+  <path d="M96 184H144M95 192h50" stroke="#e0d4ae" stroke-width=".7" opacity=".45"/>
+  <path d="M42 194 58 198 91 203H149L182 198 198 194 194 210 180 216 149 215 145 225H95L91 215 60 216 46 210Z" fill="url(#pd-bronze)" stroke="#24373a" stroke-width="2"/>
+  <path d="m46 198 17 5 31 5h52l31-5 17-5" fill="none" stroke="#e3d6b4" stroke-width="1.2" opacity=".63"/>
+  <path d="M103 207h34v20h-34Z" fill="#566b6e" stroke="#c0c7af" stroke-width=".6"/>
+  <path d="m109 211 11 6 11-6m-22 10 11-6 11 6" fill="none" stroke="#aeb7a1" stroke-width=".7" opacity=".6"/>
+  <path d="M101 9 113 3H127L139 9 145 28 137 42H103L95 28Z" fill="url(#pd-bronze)" stroke="#233738" stroke-width="2"/>
+  <path d="m103 12 13-5h8l13 5 4 15-7 10h-28l-7-10Z" fill="none" stroke="#d8ccaa" stroke-width=".9" opacity=".58"/>
+  <circle cx="120" cy="23" r="5" fill="#354b4f" stroke="#b7b496" stroke-width="1"/>
+  <path d="m117 23 3-3 3 3-3 3Z" fill="#b3aa88"/>
+</g><g clip-path="url(#pd-blade-clip)"><path d="M67 220H176V738H67Z" fill="url(#pd-sheen)" opacity=".38"/><path class="blade-glint" d="m53 242 132-73v24L53 267Z" fill="#f2f2df" opacity=".72"/></g></svg>

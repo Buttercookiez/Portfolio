@@ -1,0 +1,17 @@
+/* Scoped illustration layers: no render loop, video, canvas, or global overlay. */
+.dagger-stage{position:relative;width:100%;height:min(70svh,640px);min-height:300px;perspective:1100px;isolation:isolate;pointer-events:none}
+.dagger-fallback{position:absolute;left:50%;top:2%;height:66%;width:auto;max-width:none;transform:translateX(-50%) rotate(-12deg);opacity:.9}
+.dagger-stage.has-dagger .dagger-fallback{display:none}
+.dagger-fall{position:absolute;left:50%;top:2%;height:66%;width:auto;aspect-ratio:240/760;transform:translateX(-50%) rotate(-12deg);transform-origin:50% 46%;transform-style:preserve-3d;z-index:2}
+.dagger-fall>.dagger-svg{display:block;height:100%;width:auto;max-width:none;overflow:visible}
+.blade-memory{opacity:0;mix-blend-mode:luminosity}
+.release-hand{position:absolute;left:50%;top:-7%;height:28%;width:auto;max-width:none;transform:translateX(-50%) rotate(-12deg);transform-origin:50% 15%;overflow:visible;z-index:3;opacity:.95;display:none}
+.story-enhanced .release-hand{display:block}
+.hand-finger,.hand-thumb{transform-box:fill-box}
+.dagger-ground{position:absolute;left:-12%;width:124%;height:1px;top:85%;background:linear-gradient(90deg,transparent,#c2c9be 24%,#e0dfce 50%,#bcc8c3 76%,transparent);opacity:.35;transform:scaleX(.025);transform-origin:center;z-index:1}
+.landing-rings{position:absolute;left:50%;top:85%;width:min(90%,420px);height:auto;max-width:none;transform:translate(-50%,-50%);opacity:0;fill:none;stroke:#b7c5c4;stroke-width:.7;z-index:1}
+body:not(.story-enhanced) .dagger-fall{transform:translateX(-50%) rotate(-12deg)}
+body:not(.story-enhanced) .dagger-ground{transform:scaleX(.65);opacity:.2}
+@media(max-width:760px){.dagger-stage{height:38svh;min-height:260px;max-height:350px}.release-hand{top:-6%;height:28%}.dagger-ground{left:0;width:100%}.landing-rings{width:100%}}
+@media(prefers-reduced-motion:reduce){.release-hand,.landing-rings{display:none!important}.dagger-fall{transform:translateX(-50%) rotate(-12deg)!important}.blade-memory{opacity:0!important}}
+@media print{.release-hand,.landing-rings,.dagger-ground{display:none!important}.dagger-stage{height:270px;min-height:0}.dagger-fall{opacity:1!important;transform:translateX(-50%) rotate(-12deg)!important}}

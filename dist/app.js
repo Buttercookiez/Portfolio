@@ -1,4 +1,4 @@
-/* Six quiet frames. The scroll position is the animation clock. */
+/* Beyond the Prologue: a restrained, scroll-led portfolio. */
 (() => {
   'use strict';
   document.documentElement.classList.add('js');
@@ -39,7 +39,7 @@
   let initialRoutePending = true;
 
   const clamp = value => Math.max(0, Math.min(1, value));
-  const headerHeight = () => $('.site-header')?.offsetHeight || 72;
+  const headerHeight = () => $('.site-header')?.offsetHeight || 0;
 
   if (gsap) gsap.ticker.lagSmoothing(0);
   if (gsap && ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
@@ -163,6 +163,76 @@
       { opacity: 1, y: 0, clipPath: fullClip, duration, ease: 'power2.out' }, at);
   }
 
+  // The large words are decorative; their complete narrative lives in the
+  // section heading. Split once so resize/reduced-motion changes do not nest spans.
+  $$('[data-split]').forEach(word => {
+    if (word.dataset.splitReady === 'true') return;
+    const text = word.textContent;
+    const fragment = document.createDocumentFragment();
+    [...text].forEach(character => {
+      const span = document.createElement('span');
+      span.className = 'type-char';
+      span.setAttribute('aria-hidden', 'true');
+      span.textContent = character === ' ' ? '\u00a0' : character;
+      fragment.append(span);
+    });
+    word.replaceChildren(fragment);
+    word.dataset.splitReady = 'true';
+  });
+
+  function animatePrelude(timeline, scene) {
+    const every = $('[data-beat="every"]', scene);
+    const beginning = $('[data-beat="beginning"]', scene);
+    const release = $('[data-beat="release"]', scene);
+    const next = $('[data-beat="next"]', scene);
+    const stage = $('.dagger-stage', scene);
+    const everyCharacters = every ? $$('.type-char', every) : [];
+    const beginningCharacters = beginning ? $$('.type-char', beginning) : [];
+    const letting = $('.type-letting', scene);
+    const lettingCharacters = letting ? $$('.type-char', letting) : [];
+    const go = $('.type-go', scene);
+    const overline = $('.type-overline', scene);
+
+    gsap.set([beginning, release, next].filter(Boolean), { opacity: 0 });
+    if (every) gsap.set(every, { opacity: 1 });
+    if (everyCharacters.length) timeline.to(everyCharacters, {
+      yPercent: -115, rotationX: -35, opacity: 0,
+      transformOrigin: '50% 100%', transformPerspective: 700,
+      duration: .1, stagger: .012, ease: 'power2.in'
+    }, .05);
+    if (every) timeline.set(every, { opacity: 0 }, .21);
+
+    if (beginning) {
+      timeline.set(beginning, { opacity: 1 }, .15);
+      if (beginningCharacters.length) timeline.fromTo(beginningCharacters,
+        { yPercent: 115, rotationX: 28, opacity: 0, transformPerspective: 700, transformOrigin: '50% 100%' },
+        { yPercent: 0, rotationX: 0, opacity: 1, duration: .075, stagger: .007, ease: 'power3.out' }, .15);
+      timeline.to(beginning, { scale: 1.8, opacity: 0, duration: .09, ease: 'power2.in' }, .31);
+    }
+    if (release) timeline.set(release, { opacity: 1 }, .32);
+    if (overline) timeline.fromTo(overline, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .075, ease: 'power2.out' }, .32);
+    if (lettingCharacters.length) timeline.fromTo(lettingCharacters,
+      { yPercent: 110, opacity: 0 },
+      { yPercent: 0, opacity: 1, duration: .075, stagger: .007, ease: 'power3.out' }, .338);
+    if (letting) timeline.to(letting, { xPercent: -38, opacity: 0, duration: .11, ease: 'power2.in' }, .53);
+    if (overline) timeline.to(overline, { opacity: 0, y: -12, duration: .07 }, .54);
+    if (go) {
+      timeline.fromTo(go, { scale: .65, y: 18, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: .1, ease: 'power2.out' }, .46);
+      timeline.to(go, { scale: 1.7, opacity: 0, duration: .1, ease: 'power2.in' }, .72);
+    }
+    if (next) timeline.fromTo(next,
+      { yPercent: 14, opacity: 0, clipPath: 'inset(0% 0% 100% 0%)' },
+      { yPercent: 0, opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: .13, ease: 'power3.out' }, .80);
+
+    if (stage) timeline.fromTo(stage, { opacity: 0 }, { opacity: 1, duration: .06 }, .30);
+    if (window.PrologueDagger?.animate) {
+      const daggerSequence = gsap.timeline();
+      window.PrologueDagger.animate(daggerSequence, scene);
+      daggerSequence.duration(.62);
+      timeline.add(daggerSequence, .30);
+    }
+  }
+
   function createSceneTimeline(scene, index) {
     const intro = index === 0;
     const finalScene = index === scenes.length - 1;
@@ -175,7 +245,6 @@
     const note = $('.project-note,.education-note,.resume-link', scene);
     const surname = $('.hero-surname', scene);
     const line = $('.scene-line', scene);
-    const wipe = $('.scene-wipe', scene);
     const mark = $('.about-mark', scene);
     const cue = $('.scene-scroll-cue', scene);
     const timeline = gsap.timeline({
@@ -184,36 +253,32 @@
         trigger: scene,
         start: intro ? () => 'top top+=' + headerHeight() : 'top 75%',
         end: 'bottom bottom',
-        scrub: .32,
+        scrub: .38,
         invalidateOnRefresh: true,
         onRefresh: queueReading
       }
     });
-    // A tiny end marker keeps every scene on a consistent 0..1 clock.
     timeline.to({}, { duration: .001 }, .999);
-    if (kicker) revealInk(timeline, kicker, intro ? .02 : .04, .12);
-    if (surname) revealInk(timeline, surname, .05, .12);
-    if (intro && title) timeline.to(title, { y: -9, duration: .58, ease: 'power1.inOut' }, .08);
-    else revealInk(timeline, title, .16, .16);
-    revealInk(timeline, description, intro ? .23 : .33, .14);
-    revealInk(timeline, actions, .47, .12);
-    revealInk(timeline, note, .56, .1);
-    if (art) {
-      timeline.fromTo(art,
-        { clipPath: intro ? 'polygon(44% 0%,50% 0%,56% 100%,50% 100%)' : 'polygon(0% 0%,0% 0%,-26% 100%,0% 100%)', opacity: 0 },
-        { clipPath: 'polygon(0% 0%,100% 0%,100% 100%,0% 100%)', opacity: 1, duration: intro ? .32 : .25, ease: 'power2.inOut' }, intro ? .1 : .02);
+    if (intro) {
+      animatePrelude(timeline, scene);
+      if (cue) timeline.to(cue, { opacity: 0, y: -5, duration: .08 }, .035);
+    } else {
+      revealInk(timeline, kicker, .03, .12);
+      revealInk(timeline, title, .12, .17);
+      revealInk(timeline, description, .29, .15);
+      revealInk(timeline, actions, .44, .14);
+      revealInk(timeline, note, .54, .1);
+      if (surname) revealInk(timeline, surname, .06, .12);
+      if (art) timeline.fromTo(art,
+        { clipPath: 'inset(0% 100% 0% 0%)', opacity: .35 },
+        { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: .27, ease: 'power2.inOut' }, .02);
+      if (image) timeline.fromTo(image,
+        { scale: 1.045, xPercent: 1 },
+        { scale: 1, xPercent: 0, duration: .48, ease: 'power1.out' }, .03);
+      if (mark) timeline.fromTo(mark, { opacity: 0, x: 22 }, { opacity: .12, x: 0, duration: .35 }, .08);
+      if (!finalScene && art) timeline.to(art, { y: -9, opacity: .6, duration: .13, ease: 'power1.inOut' }, .87);
     }
-    if (image) {
-      timeline.fromTo(image, { scale: 1.12, xPercent: 4 }, { scale: 1.01, xPercent: 0, duration: .42, ease: 'power1.out' }, .02);
-      if (!finalScene) timeline.to(image, { scale: 1.045, yPercent: -3, duration: .14, ease: 'power1.inOut' }, .86);
-    }
-    if (mark) timeline.fromTo(mark, { opacity: 0, x: 35 }, { opacity: .13, x: 0, duration: .35 }, .08);
-    if (line) timeline.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: .74 }, .02);
-    if (cue) timeline.to(cue, { opacity: 0, y: -6, duration: .12 }, .03);
-    if (wipe) {
-      gsap.set(wipe, { xPercent: 130 });
-      if (!finalScene) timeline.to(wipe, { xPercent: -300, duration: .14, ease: 'power2.inOut' }, .86);
-    }
+    if (line) timeline.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: .8 }, .02);
     records.push({ scene, timeline, trigger: timeline.scrollTrigger });
   }
 
@@ -236,7 +301,8 @@
     if (enhanced) {
       try {
         document.body.classList.add('story-enhanced');
-        readerContext = gsap.context(() => scenes.forEach(createSceneTimeline));
+        readerContext = gsap.context(() => {});
+        readerContext.add(() => scenes.forEach(createSceneTimeline));
       } catch {
         readerContext?.revert();
         readerContext = null;
@@ -244,7 +310,7 @@
         records = [];
         enhanced = false;
         document.body.classList.remove('story-enhanced');
-        gsap.set($$('.scene-art,.scene-art img,[data-ink],.scene-title,.scene-line,.scene-wipe,.scene-scroll-cue,.about-mark'), { clearProps: 'transform,opacity,clipPath' });
+        gsap.set($$('.scene-art,.scene-art img,[data-ink],.scene-title,.scene-line,.scene-scroll-cue,.about-mark'), { clearProps: 'transform,opacity,clipPath' });
       }
     }
     ScrollTrigger?.refresh();
@@ -287,7 +353,7 @@
   document.addEventListener('focusin', event => {
     if (routing || !enhanced || dialog?.open) return;
     const scene = event.target.closest('[data-story]');
-    if (!scene || !event.target.closest('a,button,input,select,textarea')) return;
+    if (!scene || scene === scenes[0] || !event.target.closest('a,button,input,select,textarea')) return;
     const record = records.find(item => item.scene === scene);
     if (record && (record.trigger.progress < .61 || record.trigger.progress > .84)) jumpScene(scene, .66, true);
   });
