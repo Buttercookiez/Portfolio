@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 560" fill="none">
+  <title>Viking longship under sail</title>
+  <desc>A crewed clinker-built ship with a rust-striped wool sail, carved dragon prow, wooden oars, and round shields.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="339" y1="72" x2="743" y2="301" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#77715e"/>
+      <stop offset=".31" stop-color="#b8a888"/>
+      <stop offset=".56" stop-color="#c6b696"/>
+      <stop offset=".82" stop-color="#a39579"/>
+      <stop offset="1" stop-color="#61594c"/>
+    </linearGradient>
+    <linearGradient id="rust" x1="0" y1="67" x2="0" y2="312" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#873f35"/>
+      <stop offset=".46" stop-color="#a65e4b"/>
+      <stop offset=".84" stop-color="#814639"/>
+      <stop offset="1" stop-color="#582f2a"/>
+    </linearGradient>
+    <linearGradient id="canvasShade" x1="503" y1="64" x2="579" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1b2726" stop-opacity=".2"/>
+      <stop offset=".39" stop-color="#ede0b0" stop-opacity=".17"/>
+      <stop offset=".72" stop-color="#efe0ae" stop-opacity="0"/>
+      <stop offset="1" stop-color="#20221f" stop-opacity=".43"/>
+    </linearGradient>
+    <linearGradient id="oak" x1="455" y1="329" x2="476" y2="481" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8e6a49"/>
+      <stop offset=".36" stop-color="#4f3a2e"/>
+      <stop offset=".69" stop-color="#382d29"/>
+      <stop offset="1" stop-color="#182124"/>
+    </linearGradient>
+    <linearGradient id="carving" x1="933" y1="182" x2="888" y2="424" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c59e63"/>
+      <stop offset=".32" stop-color="#946d46"/>
+      <stop offset=".62" stop-color="#715035"/>
+      <stop offset="1" stop-color="#3a3026"/>
+    </linearGradient>
+    <linearGradient id="wake" x1="54" y1="0" x2="1017" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c8d3c7" stop-opacity="0"/>
+      <stop offset=".24" stop-color="#a6b6ac" stop-opacity=".42"/>
+      <stop offset=".68" stop-color="#cad7c4" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#c8d3c7" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="cloth-grain" width="8" height="9" patternUnits="userSpaceOnUse">
+      <path d="M.5 1.5h6m-4 4h5m-7 2h3" stroke="#241f1d" stroke-opacity=".15" stroke-width=".7" stroke-linecap="round"/>
+      <path d="M3.5 0v2m3 4v2" stroke="#e7d5a8" stroke-opacity=".27" stroke-width=".7"/>
+    </pattern>
+    <pattern id="oak-grain" width="112" height="23" patternUnits="userSpaceOnUse" patternTransform="rotate(2)">
+      <path d="M2 5q19-2 39 0t44-1m-38 8q22-2 48 0l13-1M5 20q15-3 45-1m24 2 22-2" stroke="#cba678" stroke-opacity=".23" stroke-width="1"/>
+      <path d="M1 8q25-2 46 0m8 8q25 1 50-2m-86 5 19-1" stroke="#1c2221" stroke-opacity=".59" stroke-width="1.2"/>
+    </pattern>
+    <clipPath id="sail-shape">
+      <path d="M351 86C453 54 626 53 727 77c-9 61-4 128 37 201-73 10-153 13-232 14-76 1-149 10-199 29 17-58 27-150 18-235Z"/>
+    </clipPath>
+    <clipPath id="hull-shape">
+      <path d="M104 296c17 40 60 57 129 69 95 16 207 23 328 22 145-1 246-15 313-56 36-22 64-63 78-101 9 12 11 29 5 50-19 70-64 122-131 157-75 39-176 51-302 52-132 1-245-13-325-45-59-23-98-67-110-110-4-16-4-27 1-38Z"/>
+    </clipPath>
+    <g id="rower">
+      <path d="M-24 61c1-11 4-27 12-35l7-4 12-1 10 5c8 9 11 18 17 34Z" fill="#252b2a" stroke="#1b2425" stroke-width="3"/>
+      <path d="M-16 59c1-17 4-25 14-31l8 1c-1 12 2 20 8 30m-23-16 2 18m27-15 7 14" stroke="#777766" stroke-opacity=".57" stroke-width="2" stroke-linecap="round"/>
+      <path d="M-6 8c0-8 4-12 11-12 9 0 12 6 12 12l-1 5 4 5-5 2-2 6-8 1-10-9Z" fill="#656656" stroke="#222829" stroke-width="2"/>
+      <path d="M-10 10c0-12 5-16 15-16 8 0 13 5 14 13-9-2-17-1-29 3Z" fill="#303533" stroke="#222829" stroke-width="2.4"/>
+      <path d="M-7 4C-2-3 5-3 13 1m2 12 1 1m-9 7 7-1" stroke="#9a9c84" stroke-opacity=".69" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M11 35q13 0 21 14l10 3-1 4-15-1-15-9" fill="#343a36" stroke="#1d2727" stroke-width="2"/>
+      <path d="m32 48 9 3 1 5-11-2" fill="#73725d"/>
+    </g>
+    <g id="shield">
+      <circle r="22" fill="#252724" stroke="#141d20" stroke-width="3.5"/>
+      <circle r="18.8" fill="currentColor" stroke="#b29a74" stroke-width="1.7"/>
+      <path d="M0-17.8v35.6M-18 0h36M-12.6-12.6 12.6 12.6" stroke="#161f21" stroke-opacity=".4" stroke-width="1.2"/>
+      <path d="M-13.2 9A16 16 0 0 0 13 9M-11-12a15 15 0 0 1 17-3" stroke="#eee0b5" stroke-opacity=".34" stroke-width="1.2"/>
+      <circle r="5.8" fill="#333837" stroke="#c4ad7d" stroke-width="1.5"/>
+      <path d="M-2-2 1-3" stroke="#ede0b9" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M0-20v2M20 0h-2M0 20v-2M-20 0h2" stroke="#d1b98a" stroke-width="1.4"/>
+    </g>
+    <g id="oar">
+      <path d="M0 0-62 89" stroke="#1e2728" stroke-width="6.8" stroke-linecap="round"/>
+      <path d="M0 0-62 89" stroke="#98724d" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M-3 5-46 66" stroke="#d5ab71" stroke-opacity=".67" stroke-width="1.15"/>
+      <path d="m-55 72 8 6-18 27-11 3-1-11Z" fill="#5b5140" stroke="#273130" stroke-width="2.7"/>
+      <path d="m-52 78-17 23" stroke="#ba925e" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <g id="longship-wake">
+    <path d="M79 487c163-7 262-12 407-10 184 3 296 1 499-8-29 15-92 28-212 38-180 14-406 18-570 7-66-4-101-14-124-27Z" fill="#22343a" opacity=".36"/>
+    <path d="M62 481c123 4 170-11 286-9s227 5 313 0 177-13 289-15m-786 44c104-3 164 6 264 5s177-7 264-7 160-6 247-18M91 514l153 1m306 10c119-8 208-4 312-22" stroke="url(#wake)" stroke-width="2.3" stroke-linecap="round"/>
+    <path d="m179 489 78-4m22 10 98 2m69 20 89-4m42-22c58-1 115-3 159-6m66-14 76-7m-49 29 68-7m-728 27 42-1m181-21 53 1" stroke="#a7b9af" stroke-opacity=".44" stroke-width="1.25" stroke-linecap="round"/>
+  </g>
+
+  <g id="longship-rig" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m510 377 15-341 12-2-10 343Z" fill="#5c482f" stroke="#1e2827" stroke-width="3.1"/>
+    <path d="m522 360 10-318" stroke="#b99769" stroke-width="2"/>
+    <path d="M533 43c16-6 43 6 60-8-11 18-24 20-38 17-12-2-17-2-22 0Z" fill="#935246" stroke="#382c28" stroke-width="2"/>
+    <path d="M541 43c20 4 33 9 49-5" stroke="#c38267" stroke-opacity=".77" stroke-width="1.15"/>
+    <path d="M522 55 190 371m345-307 298 278M536 74l336 258M511 124 271 363" stroke="#272d29" stroke-opacity=".88" stroke-width="2.1"/>
+    <path d="M523 55 190 371m343-307 298 278" stroke="#c3ab77" stroke-opacity=".55" stroke-width=".85"/>
+
+    <path d="M351 86C453 54 626 53 727 77c-9 61-4 128 37 201-73 10-153 13-232 14-76 1-149 10-199 29 17-58 27-150 18-235Z" fill="url(#canvas)" stroke="#2c302a" stroke-width="5"/>
+    <g clip-path="url(#sail-shape)">
+      <path d="M362 60h52c25 83 25 171 1 243l-65 29c21-94 21-174 12-272ZM474 51h63c26 90 28 165 4 247l-70 7c26-88 23-174 3-254ZM607 48h58c25 74 32 145 28 245l-68 5c10-104 7-179-18-250ZM723 51h24l34 240-40 2c-8-64-18-130-18-242Z" fill="url(#rust)"/>
+      <path d="M313 47h464v288H313z" fill="url(#canvasShade)"/>
+      <path d="M313 47h464v288H313z" fill="url(#cloth-grain)"/>
+      <path d="M386 77c14 72 15 153-2 231m54-241c20 84 23 155 2 235m59-242c21 79 24 150 2 235m67-240c21 74 27 146 12 239m58-237c19 72 28 146 21 235m45-221c10 72 23 150 36 210" stroke="#382e27" stroke-opacity=".48" stroke-width="1.4"/>
+      <path d="M388 78c15 77 15 151-3 229m55-239c20 84 24 153 2 234m59-241c21 79 23 150 2 233m67-238c22 76 27 147 13 236m57-234c19 72 28 144 21 233" stroke="#e1c999" stroke-opacity=".57" stroke-width=".9" stroke-dasharray="2.5 4"/>
+      <path d="M353 187c80-29 164-38 273-39 38 0 75 4 111 8m-392 91c93-30 200-40 308-42 36 0 67 2 94 5M367 116c103-32 226-38 348-26m-365 201c96-31 182-36 291-37 42 0 77 0 108-3" stroke="#f0d8ad" stroke-opacity=".21" stroke-width="1.8"/>
+      <path d="M364 148c91-26 190-37 292-33m-293 98c104-33 213-38 328-36m-328 96c88-24 161-30 241-30" stroke="#432e2a" stroke-opacity=".31" stroke-width="1"/>
+      <path d="M337 314c59-23 133-29 204-30 90-2 158-4 217-13" stroke="#261f1b" stroke-opacity=".61" stroke-width="4.5"/>
+      <path d="M337 310c59-23 133-29 204-30 90-2 158-4 217-13" stroke="#cfb58a" stroke-opacity=".63" stroke-width="1.2" stroke-dasharray="3 4"/>
+    </g>
+    <path d="M346 88c101-35 275-37 387-13" stroke="#2c2b24" stroke-width="10"/>
+    <path d="M346 85c101-35 275-37 387-13" stroke="#9c7d51" stroke-width="3.5"/>
+    <path d="M357 83c105-31 246-31 366-12" stroke="#c5a571" stroke-opacity=".76" stroke-width="1.1"/>
+    <path d="m357 80 2 14m27-21 4 14m30-21 2 13m32-18 2 12m30-15 1 13m34-15v14m34-15v13m36-13-1 13m33-11-1 13m34-10-2 12m37-7-2 11m32-6-3 11" stroke="#322d23" stroke-width="2.6"/>
+    <path d="M335 320c-20 14-47 29-80 41m509-83c19 24 43 42 74 57m-467-28c-7 15-11 31-9 60" stroke="#372f26" stroke-width="2.4"/>
+    <path d="M335 320c-20 14-47 29-80 41m509-83c19 24 43 42 74 57" stroke="#b79d71" stroke-opacity=".64" stroke-width=".8"/>
+  </g>
+
+  <g id="longship-crew">
+    <path d="M161 377c-2-12-4-24 3-39l7-21 13-4 12 7 10 24 8 25-9 13Z" fill="#303632" stroke="#1f2928" stroke-width="3"/>
+    <path d="M169 318c-5-8-3-17 4-22 8-6 18-3 22 4l2 9 4 5-7 1-3 8-10 1Z" fill="#79735d" stroke="#232b2b" stroke-width="2.5"/>
+    <path d="M165 306c2-12 9-16 19-14 6 1 10 4 12 10l-31 7Z" fill="#41463d" stroke="#242c2a" stroke-width="2"/>
+    <path d="m180 335 11 14 30-5 3 5-31 11-18-11" fill="#505345" stroke="#27302e" stroke-width="2.5"/>
+    <path d="M161 341 141 420" stroke="#362f27" stroke-width="5" stroke-linecap="round"/>
+    <path d="m159 342-17 73" stroke="#a17f56" stroke-width="2"/>
+    <use href="#rower" transform="translate(253 321) scale(.88)"/>
+    <use href="#rower" transform="translate(317 331) rotate(-9) scale(.87)"/>
+    <use href="#rower" transform="translate(379 325) rotate(8) scale(.9)"/>
+    <use href="#rower" transform="translate(446 333) rotate(-5) scale(.86)"/>
+    <use href="#rower" transform="translate(506 327) rotate(8) scale(.94)"/>
+    <use href="#rower" transform="translate(571 329) rotate(-4) scale(.94)"/>
+    <use href="#rower" transform="translate(636 322) rotate(8) scale(.92)"/>
+    <use href="#rower" transform="translate(699 320) rotate(-4) scale(.85)"/>
+    <use href="#rower" transform="translate(762 310) rotate(7) scale(.91)"/>
+    <path d="M810 354c4-11 7-25 10-39l-1-21 9-14 13-3 12 8 5 18 7 19 16 27-28 14-21 1Z" fill="#303735" stroke="#202a2a" stroke-width="3.2"/>
+    <path d="M829 284c-6 12-5 28-1 39l-10 28 11 7 10-28 11 10-4 18 15-8-5-17-12-31 2-18Z" fill="#626052"/>
+    <path d="M828 279c-3-7-4-14 0-20 5-7 17-9 23-2l4 9 5 6-7 2-4 10-10 1Z" fill="#897c62" stroke="#292d29" stroke-width="2.6"/>
+    <path d="M826 269c-1-10 4-18 13-19 9 0 15 6 16 14l-9-2-5 4Z" fill="#4d5146" stroke="#272d2c" stroke-width="2.8"/>
+    <path d="M830 257q9-6 18-1m2 13 2 1m-18 19-4 16m-3 10-5 19m35-18 7 13" stroke="#c0aa83" stroke-opacity=".72" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="m845 294 13 13 18-10 4 4-20 16-19-11" fill="#626453" stroke="#27302e" stroke-width="2.7"/>
+    <path d="m876 297 10-5 5 4-12 7" fill="#908367"/>
+  </g>
+
+  <g id="longship-hull" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M104 296c17 40 60 57 129 69 95 16 207 23 328 22 145-1 246-15 313-56 36-22 64-63 78-101 9 12 11 29 5 50-19 70-64 122-131 157-75 39-176 51-302 52-132 1-245-13-325-45-59-23-98-67-110-110-4-16-4-27 1-38Z" fill="url(#oak)" stroke="#172324" stroke-width="6"/>
+    <g clip-path="url(#hull-shape)">
+      <path d="M74 302c19 56 112 78 202 88 157 20 350 22 519-11 80-16 135-43 168-87l-13 49c-39 53-122 82-206 99-158 32-329 39-488 12-73-12-133-34-162-59Z" fill="#342d28" opacity=".44"/>
+      <path d="M94 328c41 49 127 66 234 76 173 16 359 16 500-22 67-18 112-56 135-93M94 353c45 51 137 65 230 76 186 22 378 12 525-30 42-12 77-37 102-62M123 389c55 41 126 56 226 66 163 17 322 6 442-19 62-13 99-32 125-52M181 434c120 57 374 65 567 28" stroke="#1a2627" stroke-width="4"/>
+      <path d="M95 324c41 49 127 66 234 76 173 16 359 16 500-22 67-18 112-56 135-93M95 349c45 51 137 65 230 76 186 22 378 12 525-30 42-12 77-37 102-62M123 385c55 41 126 56 226 66 163 17 322 6 442-19 62-13 99-32 125-52" stroke="#bc9462" stroke-opacity=".74" stroke-width="1.8"/>
+      <path d="M89 297h869v197H89z" fill="url(#oak-grain)"/>
+      <path d="M175 374c58 30 218 42 309 43m-227 32c147 28 340 26 499 0m-416 26c149 16 357 7 485-27M720 409c69-8 130-30 164-47" stroke="#caa875" stroke-opacity=".45" stroke-width="1.6"/>
+    </g>
+    <path d="M99 310c20 38 76 55 134 65 118 21 269 25 438 14 117-8 208-32 258-100" stroke="#262c28" stroke-width="12"/>
+    <path d="M99 307c20 38 76 55 134 65 118 21 269 25 438 14 117-8 208-32 258-100" stroke="#ad8557" stroke-width="5.2"/>
+    <path d="M103 312c21 32 75 51 132 60 118 20 269 24 436 14 117-8 208-33 253-95" stroke="#d0a975" stroke-opacity=".76" stroke-width="1.4"/>
+    <path d="M107 333c-12-17-21-37-18-58 1-14 10-23 21-26 13-4 24 3 26 14 1 9-5 15-12 15-6 0-9-4-8-9 0-4 5-6 8-3 0-7-11-10-17-5-7 5-7 18-3 29l17 29Z" fill="#906b47" stroke="#252b27" stroke-width="4"/>
+    <path d="M105 319c-12-20-16-38-12-51 4-11 18-18 29-13m-26 37 16 27" stroke="#c19c69" stroke-width="1.5"/>
+    <path d="M837 414c53-38 78-76 93-111 12-28 22-65 15-79-4-9-16-6-23-16-5-8-2-18 5-22 10-5 23-2 29 6l8-8 16 6 19 5 10 10-5 8-20-1 17 7-7 7-22-4-9 7c3 30-6 58-17 83-17 42-49 78-88 104Z" fill="url(#carving)" stroke="#232b28" stroke-width="4.8"/>
+    <path d="M934 206c-3-5 1-11 7-11 9 0 13 11 23 8 8-2 12-9 20-8m-24 29c-2-5-6-8-11-11m-1 17c8 37-20 123-76 167m75-123c-6 38-28 77-56 103" stroke="#e3bb78" stroke-opacity=".79" stroke-width="2.1"/>
+    <path d="M969 205q8-6 17-2l-5 5-10 1Z" fill="#272c27"/>
+    <path d="m978 205 3-1m16 3 3 1" stroke="#efe0ae" stroke-width="1.8"/>
+    <path d="M946 243q16 11 4 22t-6 23m-2 4q10 12-6 22t-13 17m-2 3q1 14-13 20t-15 17m-37 37q14-4 18-16" stroke="#382f26" stroke-width="2.1"/>
+    <path d="M945 245q11 11 2 18t-5 23m-2 9q5 7-6 17t-12 15m-3 8q1 10-12 17t-15 16" stroke="#c7a367" stroke-width="1.3"/>
+    <path d="m204 374 2 3m32 3 1 4m30 0 1 5m31 0 1 4m31-1 1 4m32-2v4m33-2v4m30-1v4m33-3v4m33-4v4m31-4v4m32-4v4m31-5v4m32-5v4m32-6v4m31-6v4m31-8 1 4m30-9 1 4m29-11 1 4m28-12 1 4" stroke="#d5ad73" stroke-opacity=".66" stroke-width="1.7"/>
+
+    <use href="#oar" transform="translate(238 393) rotate(-8) scale(.88)"/>
+    <use href="#oar" transform="translate(299 405) rotate(-5) scale(.93)"/>
+    <use href="#oar" transform="translate(363 413) rotate(-4) scale(.98)"/>
+    <use href="#oar" transform="translate(427 417) rotate(-1) scale(1)"/>
+    <use href="#oar" transform="translate(491 419) rotate(1) scale(.98)"/>
+    <use href="#oar" transform="translate(555 419) rotate(2) scale(1)"/>
+    <use href="#oar" transform="translate(619 416) rotate(4) scale(.96)"/>
+    <use href="#oar" transform="translate(681 409) rotate(6) scale(.95)"/>
+    <use href="#oar" transform="translate(742 400) rotate(7) scale(.92)"/>
+    <use href="#oar" transform="translate(798 385) rotate(11) scale(.9)"/>
+
+    <use href="#shield" transform="translate(237 383) scale(.87)" color="#7b473b"/>
+    <use href="#shield" transform="translate(299 394) scale(.93)" color="#7d785c"/>
+    <use href="#shield" transform="translate(363 400) scale(.98)" color="#555e52"/>
+    <use href="#shield" transform="translate(427 404)" color="#8d583f"/>
+    <use href="#shield" transform="translate(491 405)" color="#616450"/>
+    <use href="#shield" transform="translate(555 405)" color="#866a46"/>
+    <use href="#shield" transform="translate(619 401)" color="#844c40"/>
+    <use href="#shield" transform="translate(681 396) scale(.98)" color="#52605b"/>
+    <use href="#shield" transform="translate(742 386) scale(.94)" color="#90784f"/>
+    <use href="#shield" transform="translate(799 371) scale(.89)" color="#76463b"/>
+    <path d="M142 421c35 30 105 51 179 61 129 18 294 15 436-4 60-8 110-31 143-61" stroke="#243335" stroke-opacity=".75" stroke-width="4"/>
+    <path d="M161 438c93 50 268 67 440 56 119-7 213-17 279-64" stroke="#98aaa0" stroke-opacity=".46" stroke-width="1.3"/>
+  </g>
+
+  <g stroke-linecap="round">
+    <path d="M129 488c32-3 46-8 62-12m-14 30 45-4m38 10 38-3m35 9 49-4m21 11 64-3m24 0 57-2m23 0 39-4m21-3 39-6m10 6 37-7m18-4 35-6m17-1 42-8m33-3 38-8m-537 47 44-3m116 12 77-7m259-41 35-6" stroke="#b5c4b3" stroke-opacity=".49" stroke-width="1.5"/>
+    <path d="M115 480c43-1 72-6 105-16m617 17c44-13 62-28 94-53m-72 44 44-10m-748 35 44-6m718-66 38-13m-640 114 23-2" stroke="#d6dfcd" stroke-opacity=".54" stroke-width="2"/>
+  </g>
+</svg>

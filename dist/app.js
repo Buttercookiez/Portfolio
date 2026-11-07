@@ -369,7 +369,10 @@
           const identity = records.find(record => record.scene.id === 'about');
           const contact = records.find(record => record.scene.id === 'contact');
           const projects = records.filter(({ scene }) => scene.hasAttribute('data-project-scene'));
-          if (identity && contact) window.PrologueDagger?.connect?.(gsap, identity.trigger, contact.trigger, titleRevealStart, projects);
+          if (identity && contact) {
+            window.PrologueDagger?.connect?.(gsap, identity.trigger, contact.trigger, titleRevealStart, projects);
+            window.PortfolioVoyage?.connect?.(gsap, identity.trigger, projects, contact.trigger);
+          }
         });
       } catch {
         readerContext?.revert();

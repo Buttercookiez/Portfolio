@@ -16,19 +16,33 @@
   <link rel="stylesheet" href="styles.css?v=saga-1">
   <link rel="stylesheet" href="dagger.css?v=left-works">
   <link rel="stylesheet" href="cinema.css?v=left-works">
-  <link rel="stylesheet" href="project-memories.css?v=left-works-3">
+  <link rel="stylesheet" href="project-memories.css?v=voyage-1">
+  <link rel="stylesheet" href="voyage.css?v=voyage-3">
   <link rel="stylesheet" href="ink-opening.css?v=saga-1">
   <script src="ink-opening.js?v=saga-1"></script>
   <script defer src="vendor/gsap.min.js"></script>
   <script defer src="vendor/ScrollTrigger.min.js"></script>
   <script defer src="vendor/lenis.min.js"></script>
-  <script defer src="dagger.js?v=left-works"></script>
-  <script defer src="app.js?v=left-works"></script>
+  <script defer src="dagger.js?v=voyage-1"></script>
+  <script defer src="voyage.js?v=voyage-2"></script>
+  <script defer src="app.js?v=voyage-1"></script>
 </head>
 <body>
   <a class="skip-link" href="#work">Skip to selected work</a>
   <div id="top" aria-hidden="true"></div>
   <div class="reading-progress" aria-hidden="true"><span></span></div>
+  <div class="voyage-stage" aria-hidden="true">
+    <div class="voyage-sky"></div>
+    <div class="voyage-fleet">
+      <img src="assets/voyage-longship.svg" width="1060" height="560" alt="" decoding="async">
+      <img src="assets/voyage-longship.svg" width="1060" height="560" alt="" decoding="async">
+    </div>
+    <svg class="voyage-water" viewBox="0 0 1440 450" preserveAspectRatio="none" fill="none">
+      <path d="M-40 82c145 0 147-20 268-15s186 29 326 28 160-26 299-26 235 20 351 21 170-7 276-20M-20 141c123 8 174-10 293-5s171 22 322 18 185-27 315-23 181 24 295 24 165-24 250-21M-37 225c160 15 223-18 381-15s214 29 376 30 208-36 351-33 220 17 419 3M-56 337c196 9 254-28 393-27s235 32 398 32 223-43 388-39 226 24 373 7" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M-50 181c200 16 292-16 469-10s234 21 416 16 292-31 655-15M-33 279c191 8 292-14 480-9s228 30 451 22 329-35 594-16M-30 396c193 16 292-26 475-17s284 36 446 29 252-25 598-12" stroke="currentColor" stroke-opacity=".46" stroke-width="1"/>
+    </svg>
+    <img class="voyage-ship" src="assets/voyage-longship.svg" width="1060" height="560" alt="" decoding="async">
+  </div>
   <main id="main" tabindex="-1">
     <section class="story-scene hero kinetic-scene" id="intro" data-story data-step="01" data-label="The prologue" data-nav="top" aria-labelledby="prologue-title">
       <div class="scene-frame">
@@ -43,32 +57,41 @@
         <span class="scene-scroll-cue" aria-hidden="true"><span class="scroll-hairline"></span>SCROLL TO BEGIN</span>
       </div>
     </section>
-    <section class="story-scene about-scene identity-scene" id="about" data-story data-step="02" data-label="The person" data-nav="about" aria-labelledby="identity-title">
-      <div class="scene-frame"><div class="scene-shell about-layout"><div class="scene-copy"><p class="scene-kicker" data-ink>THE PERSON BEHIND THE WORK</p><h1 class="scene-title identity-title kinetic-name" id="identity-title" aria-label="John Francis Marabe" data-ink><span class="identity-line" data-split>John Francis</span><span class="identity-line identity-surname" data-split>Marabe.</span></h1><p class="scene-description" data-ink>Web &amp; mobile developer.<br>Learning by building.</p><p class="education-note" data-ink>BS Information Technology · DLSP<br>Expected graduation, 2027</p><div class="scene-actions" data-ink><a class="project-visit" href="#work">Selected work <span aria-hidden="true">↘</span></a><a class="text-link" href="assets/JohnFrancisMarabeResume.docx" download>My résumé <span aria-hidden="true">↓</span></a></div></div></div><div class="scene-line" aria-hidden="true"></div></div>
+    <section class="story-scene about-scene identity-scene voyage-chapter voyage-departure" id="about" data-story data-step="02" data-label="The departure" data-nav="about" aria-labelledby="identity-title">
+      <div class="scene-frame">
+        <div class="scene-shell about-layout">
+          <div class="scene-copy">
+            <p class="scene-kicker voyage-kicker" data-ink>Chapter I <span aria-hidden="true"></span> Set sail</p>
+            <h1 class="scene-title identity-title kinetic-name" id="identity-title" aria-label="John Francis Marabe" data-ink><span class="identity-line" data-split>John Francis</span><span class="identity-line identity-surname" data-split>Marabe.</span></h1>
+            <p class="scene-description" data-ink>Web &amp; mobile developer.</p>
+            <p class="education-note" data-ink>BS Information Technology · DLSP<br>Expected graduation, 2027</p>
+            <div class="scene-actions" data-ink><a class="project-visit" href="#work">Explore the cargo <span aria-hidden="true">↘</span></a><a class="text-link" href="assets/JohnFrancisMarabeResume.docx" download>My résumé <span aria-hidden="true">↓</span></a></div>
+          </div>
+        </div>
+        <img class="voyage-static" src="assets/voyage-longship.svg" width="1060" height="560" alt="" decoding="async">
+        <span class="voyage-scroll" aria-hidden="true">Scroll to sail <span>↓</span></span>
+      </div>
     </section>
-    <section class="story-scene project-scene" id="work" data-story data-step="03" data-project-scene="herbal" data-label="Hanap Medisina" data-nav="work" aria-labelledby="herbal-title">
+    <section class="story-scene project-scene voyage-chapter" id="work" data-story data-step="03" data-project-scene="herbal" data-label="Hanap Medisina" data-nav="work" aria-labelledby="herbal-title">
       <div class="scene-frame">
         <div class="scene-shell project-layout">
           <p class="scene-kicker project-masthead" data-ink>
-            <span>Selected work</span>
-            <span class="project-folio"><strong>01</strong> / 03</span>
+            <span>Ship’s log<span class="cargo-log-detail"> <span class="cargo-log-divider" aria-hidden="true"></span> Selected work</span></span>
+            <span class="project-folio">Cargo <strong>01</strong> / 03</span>
           </p>
           <figure class="scene-art project-art" data-art>
-            <div class="browser-chrome" aria-hidden="true">
-              <span class="browser-dots"></span>
-              <span>hanap-medsesinav2.vercel.app</span>
-              <span>↗</span>
-            </div>
+            <div class="cargo-label" aria-hidden="true"><span>Crate 01</span><span>Field notes</span></div>
             <div class="project-memory">
               <div class="memory-slice"><img src="assets/project-herbal.jpg" width="1265" height="712" alt="Preview of the Hanap Medisina website." loading="lazy" decoding="async"></div>
               <div class="memory-slice" aria-hidden="true"><img src="assets/project-herbal.jpg" width="1265" height="712" alt="" loading="lazy" decoding="async"></div>
               <div class="memory-slice" aria-hidden="true"><img src="assets/project-herbal.jpg" width="1265" height="712" alt="" loading="lazy" decoding="async"></div>
               <span class="memory-register" data-index="01" aria-hidden="true"></span>
+              <a class="cargo-preview-link" href="https://hanap-medsesinav2.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open the Hanap Medisina project preview (opens in a new tab)"><span aria-hidden="true">↗</span></a>
             </div>
-            <figcaption class="project-caption"><span>Website preview</span><span aria-hidden="true">FIG. 01</span></figcaption>
+            <figcaption class="project-caption"><span>Project preview</span><span aria-hidden="true">Record 01</span></figcaption>
           </figure>
           <div class="scene-copy project-copy">
-            <h2 class="scene-title kinetic-heading" id="herbal-title" aria-label="Hanap Medisina" data-ink><span data-split>Hanap</span><em data-split>Medisina.</em></h2>
+            <h2 class="scene-title kinetic-heading" id="herbal-title" aria-label="Hanap Medisina" data-ink><span data-split>Hanap</span><em data-split>Medisina</em></h2>
             <p class="scene-description" data-ink>Explore and identify Philippine medicinal plants in an offline mobile app.</p>
             <small class="project-note" data-ink><span>Plant identification</span><span>Works offline</span></small>
             <div class="scene-actions" data-ink>
@@ -80,29 +103,26 @@
         <div class="scene-line" aria-hidden="true"></div>
       </div>
     </section>
-    <section class="story-scene project-scene" id="koki" data-story data-step="04" data-project-scene="koki" data-label="Koki Emulator" data-nav="work" aria-labelledby="koki-title">
+    <section class="story-scene project-scene voyage-chapter" id="koki" data-story data-step="04" data-project-scene="koki" data-label="Koki Emulator" data-nav="work" aria-labelledby="koki-title">
       <div class="scene-frame">
         <div class="scene-shell project-layout">
           <p class="scene-kicker project-masthead" data-ink>
-            <span>Selected work</span>
-            <span class="project-folio"><strong>02</strong> / 03</span>
+            <span>Ship’s log<span class="cargo-log-detail"> <span class="cargo-log-divider" aria-hidden="true"></span> Selected work</span></span>
+            <span class="project-folio">Cargo <strong>02</strong> / 03</span>
           </p>
           <figure class="scene-art project-art" data-art>
-            <div class="browser-chrome" aria-hidden="true">
-              <span class="browser-dots"></span>
-              <span>koki-emulator09.vercel.app</span>
-              <span>↗</span>
-            </div>
+            <div class="cargo-label" aria-hidden="true"><span>Crate 02</span><span>Game library</span></div>
             <div class="project-memory">
               <div class="memory-slice"><img src="assets/project-koki.jpg" width="1265" height="712" alt="Preview of the Koki Emulator website." loading="lazy" decoding="async"></div>
               <div class="memory-slice" aria-hidden="true"><img src="assets/project-koki.jpg" width="1265" height="712" alt="" loading="lazy" decoding="async"></div>
               <div class="memory-slice" aria-hidden="true"><img src="assets/project-koki.jpg" width="1265" height="712" alt="" loading="lazy" decoding="async"></div>
               <span class="memory-register" data-index="02" aria-hidden="true"></span>
+              <a class="cargo-preview-link" href="https://koki-emulator09.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open the Koki Emulator project preview (opens in a new tab)"><span aria-hidden="true">↗</span></a>
             </div>
-            <figcaption class="project-caption"><span>Website preview</span><span aria-hidden="true">FIG. 02</span></figcaption>
+            <figcaption class="project-caption"><span>Project preview</span><span aria-hidden="true">Record 02</span></figcaption>
           </figure>
           <div class="scene-copy project-copy">
-            <h2 class="scene-title kinetic-heading" id="koki-title" aria-label="Koki Emulator" data-ink><span data-split>Koki</span><em data-split>Emulator.</em></h2>
+            <h2 class="scene-title kinetic-heading" id="koki-title" aria-label="Koki Emulator" data-ink><span data-split>Koki</span><em data-split>Emulator</em></h2>
             <p class="scene-description" data-ink>Organize and browse your games in one library, then jump back into play.</p>
             <small class="project-note" data-ink><span>Game library</span><span>Multi-platform</span></small>
             <div class="scene-actions" data-ink>
@@ -114,29 +134,26 @@
         <div class="scene-line" aria-hidden="true"></div>
       </div>
     </section>
-    <section class="story-scene project-scene" id="monovault" data-story data-step="05" data-project-scene="monovault" data-label="Monovault" data-nav="work" aria-labelledby="monovault-title">
+    <section class="story-scene project-scene voyage-chapter" id="monovault" data-story data-step="05" data-project-scene="monovault" data-label="Monovault" data-nav="work" aria-labelledby="monovault-title">
       <div class="scene-frame">
         <div class="scene-shell project-layout">
           <p class="scene-kicker project-masthead" data-ink>
-            <span>Selected work</span>
-            <span class="project-folio"><strong>03</strong> / 03</span>
+            <span>Ship’s log<span class="cargo-log-detail"> <span class="cargo-log-divider" aria-hidden="true"></span> Selected work</span></span>
+            <span class="project-folio">Cargo <strong>03</strong> / 03</span>
           </p>
           <figure class="scene-art project-art" data-art>
-            <div class="browser-chrome" aria-hidden="true">
-              <span class="browser-dots"></span>
-              <span>monovault.vercel.app</span>
-              <span>↗</span>
-            </div>
+            <div class="cargo-label" aria-hidden="true"><span>Crate 03</span><span>Private vault</span></div>
             <div class="project-memory">
               <div class="memory-slice"><img src="assets/project-monovault.jpg" width="1265" height="712" alt="Preview of the Monovault website." loading="lazy" decoding="async"></div>
               <div class="memory-slice" aria-hidden="true"><img src="assets/project-monovault.jpg" width="1265" height="712" alt="" loading="lazy" decoding="async"></div>
               <div class="memory-slice" aria-hidden="true"><img src="assets/project-monovault.jpg" width="1265" height="712" alt="" loading="lazy" decoding="async"></div>
               <span class="memory-register" data-index="03" aria-hidden="true"></span>
+              <a class="cargo-preview-link" href="https://monovault.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Open the Monovault project preview (opens in a new tab)"><span aria-hidden="true">↗</span></a>
             </div>
-            <figcaption class="project-caption"><span>Website preview</span><span aria-hidden="true">FIG. 03</span></figcaption>
+            <figcaption class="project-caption"><span>Project preview</span><span aria-hidden="true">Record 03</span></figcaption>
           </figure>
           <div class="scene-copy project-copy">
-            <h2 class="scene-title kinetic-heading" id="monovault-title" aria-label="Monovault" data-ink><span data-split>Mono</span><em data-split>vault.</em></h2>
+            <h2 class="scene-title kinetic-heading" id="monovault-title" aria-label="Monovault" data-ink><span data-split>Mono</span><em data-split>vault</em></h2>
             <p class="scene-description" data-ink>Keep passwords and recovery phrases encrypted on your device.</p>
             <small class="project-note" data-ink><span>Password manager</span><span>AES-256-GCM</span></small>
             <div class="scene-actions" data-ink>
@@ -149,7 +166,7 @@
       </div>
     </section>
     <section class="story-scene contact-scene" id="contact" data-story data-step="06" data-label="The next chapter" data-nav="contact" aria-labelledby="contact-title">
-      <div class="scene-frame"><div class="contact-landscape" aria-hidden="true"><img src="assets/nordic-shore.webp" width="1440" height="810" alt="" loading="lazy" decoding="async"></div><div class="scene-shell contact-layout"><div class="scene-copy"><p class="scene-kicker" data-ink>THE NEXT CHAPTER</p><h2 class="scene-title kinetic-heading" id="contact-title" aria-label="Let’s build what’s next" data-ink><span data-split>Let’s build</span><em data-split>what’s next.</em></h2><div class="scene-actions" data-ink><a class="button button-primary" href="mailto:johnfrancismarabe040905@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a><button class="copy-email" type="button" data-email="johnfrancismarabe040905@gmail.com" aria-label="Copy email address johnfrancismarabe040905@gmail.com">johnfrancismarabe040905@gmail.com <span aria-hidden="true">⧉</span></button></div></div></div><div class="scene-line" aria-hidden="true"></div></div>
+      <div class="scene-frame"><div class="contact-landscape" aria-hidden="true"><img src="assets/nordic-shore.webp" width="1440" height="810" alt="" loading="lazy" decoding="async"></div><div class="scene-shell contact-layout"><div class="scene-copy"><p class="scene-kicker" data-ink>LANDFALL / THE NEXT CHAPTER</p><h2 class="scene-title kinetic-heading" id="contact-title" aria-label="Let’s build what’s next" data-ink><span data-split>Let’s build</span><em data-split>what’s next.</em></h2><div class="scene-actions" data-ink><a class="button button-primary" href="mailto:johnfrancismarabe040905@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a><button class="copy-email" type="button" data-email="johnfrancismarabe040905@gmail.com" aria-label="Copy email address johnfrancismarabe040905@gmail.com">johnfrancismarabe040905@gmail.com <span aria-hidden="true">⧉</span></button></div></div></div><div class="scene-line" aria-hidden="true"></div></div>
     </section>
   </main>
   <div class="dagger-stage" aria-hidden="true"><img class="dagger-fallback" src="assets/prologue-dagger.svg?v=saga-1" width="240" height="760" alt=""></div>

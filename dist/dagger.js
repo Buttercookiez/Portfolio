@@ -55,13 +55,18 @@
   stage.append(ground, fall);
   stage.classList.add('has-dagger');
 
+  // The montage has three equal shots, one for each named cargo chapter.
+  const memoryFrameRate = 20;
+  const memoryFramesPerShot = 24;
+  const firstMemoryFrame = { herbal: 0, koki: 24, monovault: 48 };
   let requestedFrame = null;
+  let requestedOpacity = 0;
+  let decodedShot = -1;
   let memoryLoading = false;
   function loadMemory() {
     if (memoryLoading) return;
     memoryLoading = true;
-    video.poster = 'assets/blade-memory.webp';
-    const source = 'assets/blade-memory.mp4';
+    const source = 'assets/blade-voyage-memories.mp4';
     if (typeof fetch !== 'function' || typeof URL.createObjectURL !== 'function') {
       video.src = source;
       return;
@@ -77,12 +82,24 @@
     });
   }
 
+  function showMemory() {
+    const visible = requestedFrame !== null &&
+      Math.floor(requestedFrame / memoryFramesPerShot) === decodedShot;
+    plate.style.opacity = visible ? requestedOpacity : 0;
+  }
+
   function seekMemory() {
     if (requestedFrame === null || video.seeking || !Number.isFinite(video.duration)) return;
-    const time = Math.floor(Math.min(requestedFrame * video.duration, video.duration - .05) * 18) / 18;
+    if (video.readyState >= 2) {
+      // Keep the steel clear while the browser seeks past a cut to another shot.
+      decodedShot = Math.floor(video.currentTime * memoryFrameRate / memoryFramesPerShot);
+      showMemory();
+    }
+    const time = (requestedFrame + .5) / memoryFrameRate;
     if (Math.abs(video.currentTime - time) > .015) video.currentTime = time;
   }
   video.addEventListener('loadedmetadata', seekMemory);
+  video.addEventListener('loadeddata', seekMemory);
   video.addEventListener('seeked', seekMemory);
 
   function connect(gsap, identity, contact, revealAt, projects) {
@@ -99,7 +116,6 @@
     const lightEdge = gsap.quickSetter(edge, 'opacity');
     const showBlade = gsap.quickSetter(fall, 'opacity');
     const revealBlade = gsap.quickSetter(fall, 'visibility');
-    const showMemory = gsap.quickSetter(plate, 'opacity');
     const unit = gsap.utils.clamp(0, 1);
     const ease = gsap.parseEase('sine.inOut');
 
@@ -146,18 +162,20 @@
       rotate(yaw);
       flip(facing < 0 ? -1 : 1);
       lightEdge(unit((.16 - Math.abs(facing)) / .16));
-      const memoryIndex = windows.findIndex(({ start, end }) => progress >= start && progress < end);
-      if (memoryIndex === -1) {
+      const memory = windows.find(({ start, end }) => progress >= start && progress < end);
+      if (!memory || memory.firstFrame === undefined) {
         requestedFrame = null;
-        showMemory(0);
+        showMemory();
         return;
       }
 
-      const { start, open, hold, end } = windows[memoryIndex];
+      const { firstFrame, start, open, hold, end } = memory;
       const inLight = ease(unit((progress - start) / Math.max(.001, open - start)));
       const outOfLight = 1 - ease(unit((progress - hold) / Math.max(.001, end - hold)));
-      showMemory(inLight * outOfLight);
-      requestedFrame = (memoryIndex + unit((progress - start) / Math.max(.001, end - start))) / windows.length;
+      const shotProgress = unit((progress - start) / Math.max(.001, end - start));
+      requestedFrame = firstFrame + Math.round(shotProgress * (memoryFramesPerShot - 1));
+      requestedOpacity = inLight * outOfLight;
+      showMemory();
       seekMemory();
     }
 
@@ -203,6 +221,7 @@
               pose(chapterTime(chapter, .72), broadside + 19, fullRoll + 7, .009)
             );
             return {
+              firstFrame: firstMemoryFrame[chapter.scene.dataset.projectScene],
               start: chapterTime(chapter, .16),
               open: chapterTime(chapter, .26),
               hold: chapterTime(chapter, .58),
