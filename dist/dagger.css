@@ -1,17 +1,142 @@
-/* Scoped illustration layers: no render loop, video, canvas, or global overlay. */
-.dagger-stage{position:relative;width:100%;height:min(70svh,640px);min-height:300px;perspective:1100px;isolation:isolate;pointer-events:none}
-.dagger-fallback{position:absolute;left:50%;top:2%;height:66%;width:auto;max-width:none;transform:translateX(-50%) rotate(-12deg);opacity:.9}
-.dagger-stage.has-dagger .dagger-fallback{display:none}
-.dagger-fall{position:absolute;left:50%;top:2%;height:66%;width:auto;aspect-ratio:240/760;transform:translateX(-50%) rotate(-12deg);transform-origin:50% 46%;transform-style:preserve-3d;z-index:2}
-.dagger-fall>.dagger-svg{display:block;height:100%;width:auto;max-width:none;overflow:visible}
-.blade-memory{opacity:0;mix-blend-mode:luminosity}
-.release-hand{position:absolute;left:50%;top:-7%;height:28%;width:auto;max-width:none;transform:translateX(-50%) rotate(-12deg);transform-origin:50% 15%;overflow:visible;z-index:3;opacity:.95;display:none}
-.story-enhanced .release-hand{display:block}
-.hand-finger,.hand-thumb{transform-box:fill-box}
-.dagger-ground{position:absolute;left:-12%;width:124%;height:1px;top:85%;background:linear-gradient(90deg,transparent,#c2c9be 24%,#e0dfce 50%,#bcc8c3 76%,transparent);opacity:.35;transform:scaleX(.025);transform-origin:center;z-index:1}
-.landing-rings{position:absolute;left:50%;top:85%;width:min(90%,420px);height:auto;max-width:none;transform:translate(-50%,-50%);opacity:0;fill:none;stroke:#b7c5c4;stroke-width:.7;z-index:1}
-body:not(.story-enhanced) .dagger-fall{transform:translateX(-50%) rotate(-12deg)}
-body:not(.story-enhanced) .dagger-ground{transform:scaleX(.65);opacity:.2}
-@media(max-width:760px){.dagger-stage{height:38svh;min-height:260px;max-height:350px}.release-hand{top:-6%;height:28%}.dagger-ground{left:0;width:100%}.landing-rings{width:100%}}
-@media(prefers-reduced-motion:reduce){.release-hand,.landing-rings{display:none!important}.dagger-fall{transform:translateX(-50%) rotate(-12deg)!important}.blade-memory{opacity:0!important}}
-@media print{.release-hand,.landing-rings,.dagger-ground{display:none!important}.dagger-stage{height:270px;min-height:0}.dagger-fall{opacity:1!important;transform:translateX(-50%) rotate(-12deg)!important}}
+/* A single fixed stage keeps the blade in frame across chapter boundaries. */
+.dagger-stage {
+  display: none;
+  pointer-events: none;
+}
+
+body.story-enhanced .dagger-stage.has-dagger {
+  --dagger-x: 88%;
+  --dagger-ground-y: 78%;
+  --dagger-size: clamp(225px, 39svh, 420px);
+  --dagger-width: calc(var(--dagger-size) * .31578947);
+  --dagger-shadow-width: clamp(125px, 18vw, 265px);
+  --dagger-shadow-height: 20px;
+  position: fixed;
+  display: block;
+  inset: 0;
+  z-index: 4;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+  overflow: hidden;
+  perspective: 1050px;
+}
+
+.dagger-stage .dagger-fallback {
+  display: none;
+}
+
+.dagger-fall {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: var(--dagger-x);
+  width: var(--dagger-width);
+  height: var(--dagger-size);
+  opacity: 0;
+}
+
+.dagger-art,
+.dagger-reflection img {
+  display: block;
+  width: 100%;
+  height: var(--dagger-size);
+  max-width: none;
+}
+
+.dagger-art {
+  filter: drop-shadow(-2px 4px 3px #10171466);
+}
+
+.dagger-ground {
+  position: absolute;
+  top: var(--dagger-ground-y);
+  left: var(--dagger-x);
+  width: 0;
+  height: 0;
+}
+
+.dagger-shadow {
+  position: absolute;
+  top: calc(var(--dagger-shadow-height) * -.5);
+  left: calc(var(--dagger-shadow-width) * -.76);
+  width: var(--dagger-shadow-width);
+  height: var(--dagger-shadow-height);
+  opacity: 0;
+  transform-origin: 76% 50%;
+  background: radial-gradient(ellipse at 72% 50%, #0b1416c4 4%, #0e18197a 27%, #19222432 47%, transparent 69%);
+  mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
+}
+
+.dagger-shadow::before {
+  position: absolute;
+  inset: 2px 8% 3px 11%;
+  content: "";
+  background: repeating-linear-gradient(161deg, #0a141a91 0 1px, transparent 1px 5px);
+  clip-path: polygon(0 62%, 42% 33%, 79% 29%, 100% 50%, 86% 78%, 48% 77%);
+}
+
+.dagger-shadow::after {
+  position: absolute;
+  top: calc(50% - .5px);
+  left: 4%;
+  width: 88%;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, #17282870 44%, #253f3a96 78%, transparent);
+}
+
+/* The SVG point is at y=739 of 760. Use that point as the mirror hinge. */
+.dagger-reflection {
+  position: absolute;
+  top: 0;
+  left: calc(var(--dagger-width) * -.5);
+  width: var(--dagger-width);
+  height: calc(var(--dagger-size) * .48);
+  overflow: hidden;
+  opacity: 0;
+  mask-image: linear-gradient(180deg, #000, #000b 14%, #0005 52%, transparent 94%);
+}
+
+.dagger-reflection img {
+  transform: translateY(-97.2368421%) scaleY(-.5);
+  transform-origin: 50% 97.2368421%;
+  filter: grayscale(.45) brightness(.74);
+}
+
+.dagger-impact {
+  position: absolute;
+  top: -35px;
+  left: -110px;
+  width: 220px;
+  height: 70px;
+  max-width: none;
+  overflow: visible;
+  color: #344e4c;
+  opacity: 0;
+}
+
+@media (max-width: 760px) {
+  body.story-enhanced .dagger-stage.has-dagger {
+    --dagger-x: 89%;
+    --dagger-ground-y: 84%;
+    --dagger-size: clamp(130px, 23svh, 198px);
+    --dagger-shadow-width: 120px;
+    --dagger-shadow-height: 14px;
+  }
+
+  .dagger-impact {
+    top: -23px;
+    left: -72px;
+    width: 144px;
+    height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  body.story-enhanced .dagger-stage.has-dagger {
+    display: none;
+  }
+}

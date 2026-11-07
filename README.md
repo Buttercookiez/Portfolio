@@ -1,8 +1,8 @@
 # John Francis — Beyond the Prologue
 
-A restrained Nordic-inspired portfolio for John Francis Marabe. An original steel dagger is released, falls through reflections of the featured work, and opens into a coastal horizon. The portfolio then presents three projects, education, and contact in six readable scenes.
+A Nordic-inspired portfolio for John Francis Marabe. The prologue uses “Go even beyond,” an excerpt from Askeladd’s line in [the official Vinland Saga episode 24 scene guide](https://vinlandsaga.jp/special/best-scene/en/). The portfolio presents three projects, education, and contact in six scenes.
 
-The opening is typography-led: oversized words unravel into EVERY, BEGINNING, LETTING GO, and WHAT’S NEXT. There is no navigation bar and the visitor’s name appears only in the following scene. The interface uses local Barlow Condensed, Instrument Serif, and Inter fonts, original painterly landscape assets, and real previews of the project websites. The dagger is an editable SVG, animated on the same GSAP timeline as the page. There is no video, WebGL renderer, continuous particle simulation, or independent dagger animation loop.
+The oversized GO, EVEN, and BEYOND title cards lead into the name reveal. The same type style carries through the project and contact scenes. There is no navigation bar. A single illustrated dagger begins to fall beside the name, stays in frame across the projects, and touches down on the final shore. Its steel carries an engraved coast, and its tip meets an ink shadow and a reflection. The interface uses local Barlow Condensed, Instrument Serif, and Inter fonts, original landscapes, and real previews of the project websites.
 
 ## Preview
 
@@ -32,15 +32,15 @@ Import [Buttercookiez/Portfolio](https://github.com/Buttercookiez/Portfolio), wi
 - [Koki Emulator](https://koki-emulator09.vercel.app/)
 - [Monovault](https://monovault.vercel.app/)
 
-Each Visit project link opens the live website. Project notes provide both live and GitHub links. The original supplied résumé remains downloadable from the header.
+Each Visit project link opens the live website. Project notes provide both live and GitHub links. The supplied résumé is downloadable from the name scene.
 
 ## Source and artwork
 
 - `dist/index.html` and `styles.css`: the six scenes and responsive visual system.
 - `dist/app.js`: the GSAP typography and story clock, Lenis, fragment routing, project dialogs, and email copying.
 - `dist/cinema.css`: the full-viewport kinetic typography and navigation-free opening.
-- `dist/dagger.js` and `dagger.css`: the original vector dagger, releasing hand, blade reflections, and measured landing.
-- `dist/assets/prologue-dagger.svg`: the editable static dagger fallback.
+- `dist/dagger.js` and `dagger.css`: the continuous descent, responsive composition, and tip-aligned landing effects.
+- `dist/assets/prologue-dagger.svg`: the original editable dagger artwork.
 - `dist/ink-opening.js` and `ink-opening.css`: the bounded PRELUDE introduction.
 - `dist/assets/nordic-horizon.webp` and `nordic-shore.webp`: original AI-generated Nordic background illustrations, optimized for the web.
 - `dist/assets/project-herbal.jpg`, `project-koki.jpg`, and `project-monovault.jpg`: previews captured from the featured public project sites on November 7, 2026.

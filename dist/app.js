@@ -23,6 +23,7 @@
   const dialog = $('#project-dialog');
   const toastElement = $('.toast');
   const fullClip = 'inset(-16px -16px -16px -16px)';
+  const titleRevealStart = .12;
   let lenis = null;
   let lenisTick = null;
   let readerContext = null;
@@ -163,8 +164,12 @@
       { opacity: 1, y: 0, clipPath: fullClip, duration, ease: 'power2.out' }, at);
   }
 
-  // The large words are decorative; their complete narrative lives in the
-  // section heading. Split once so resize/reduced-motion changes do not nest spans.
+  // Preserve the accessible heading before replacing its visible text with letters.
+  $$('.kinetic-heading,.kinetic-name').forEach(heading => {
+    if (heading.hasAttribute('aria-label')) return;
+    const label = $$('[data-split]', heading).map(line => line.textContent.trim()).join(' ');
+    if (label) heading.setAttribute('aria-label', label);
+  });
   $$('[data-split]').forEach(word => {
     if (word.dataset.splitReady === 'true') return;
     const text = word.textContent;
@@ -185,13 +190,11 @@
     const beginning = $('[data-beat="beginning"]', scene);
     const release = $('[data-beat="release"]', scene);
     const next = $('[data-beat="next"]', scene);
-    const stage = $('.dagger-stage', scene);
     const everyCharacters = every ? $$('.type-char', every) : [];
     const beginningCharacters = beginning ? $$('.type-char', beginning) : [];
     const letting = $('.type-letting', scene);
     const lettingCharacters = letting ? $$('.type-char', letting) : [];
     const go = $('.type-go', scene);
-    const overline = $('.type-overline', scene);
 
     gsap.set([beginning, release, next].filter(Boolean), { opacity: 0 });
     if (every) gsap.set(every, { opacity: 1 });
@@ -210,27 +213,30 @@
       timeline.to(beginning, { scale: 1.8, opacity: 0, duration: .09, ease: 'power2.in' }, .31);
     }
     if (release) timeline.set(release, { opacity: 1 }, .32);
-    if (overline) timeline.fromTo(overline, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: .075, ease: 'power2.out' }, .32);
     if (lettingCharacters.length) timeline.fromTo(lettingCharacters,
       { yPercent: 110, opacity: 0 },
       { yPercent: 0, opacity: 1, duration: .075, stagger: .007, ease: 'power3.out' }, .338);
-    if (letting) timeline.to(letting, { xPercent: -38, opacity: 0, duration: .11, ease: 'power2.in' }, .53);
-    if (overline) timeline.to(overline, { opacity: 0, y: -12, duration: .07 }, .54);
     if (go) {
-      timeline.fromTo(go, { scale: .65, y: 18, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: .1, ease: 'power2.out' }, .46);
-      timeline.to(go, { scale: 1.7, opacity: 0, duration: .1, ease: 'power2.in' }, .72);
+      timeline.fromTo(go, { scale: .91, y: 12, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: .16, ease: 'power2.out' }, .36);
     }
+    if (release) timeline.to(release, { scale: 1.09, opacity: 0, duration: .13, ease: 'power2.inOut' }, .71);
     if (next) timeline.fromTo(next,
       { yPercent: 14, opacity: 0, clipPath: 'inset(0% 0% 100% 0%)' },
-      { yPercent: 0, opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: .13, ease: 'power3.out' }, .80);
+      { yPercent: 0, opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: .17, ease: 'power3.out' }, .77);
+  }
 
-    if (stage) timeline.fromTo(stage, { opacity: 0 }, { opacity: 1, duration: .06 }, .30);
-    if (window.PrologueDagger?.animate) {
-      const daggerSequence = gsap.timeline();
-      window.PrologueDagger.animate(daggerSequence, scene);
-      daggerSequence.duration(.62);
-      timeline.add(daggerSequence, .30);
+  function revealTitle(timeline, title) {
+    const lines = title?.matches('.kinetic-heading,.kinetic-name') ? $$('[data-split]', title) : [];
+    if (!lines.length) {
+      revealInk(timeline, title, titleRevealStart, .17);
+      return;
     }
+    lines.forEach((line, index) => {
+      timeline.fromTo($$('.type-char', line),
+        { yPercent: 105, rotationX: 35, opacity: 0, transformPerspective: 700, transformOrigin: '50% 100%' },
+        { yPercent: 0, rotationX: 0, opacity: 1, duration: .15, stagger: { amount: .065 }, ease: 'power3.out' },
+        titleRevealStart + index * .045);
+    });
   }
 
   function createSceneTimeline(scene, index) {
@@ -264,7 +270,7 @@
       if (cue) timeline.to(cue, { opacity: 0, y: -5, duration: .08 }, .035);
     } else {
       revealInk(timeline, kicker, .03, .12);
-      revealInk(timeline, title, .12, .17);
+      revealTitle(timeline, title);
       revealInk(timeline, description, .29, .15);
       revealInk(timeline, actions, .44, .14);
       revealInk(timeline, note, .54, .1);
@@ -302,7 +308,12 @@
       try {
         document.body.classList.add('story-enhanced');
         readerContext = gsap.context(() => {});
-        readerContext.add(() => scenes.forEach(createSceneTimeline));
+        readerContext.add(() => {
+          scenes.forEach(createSceneTimeline);
+          const identity = records.find(record => record.scene.id === 'about');
+          const contact = records.find(record => record.scene.id === 'contact');
+          if (identity && contact) window.PrologueDagger?.connect?.(gsap, identity.trigger, contact.trigger, titleRevealStart);
+        });
       } catch {
         readerContext?.revert();
         readerContext = null;

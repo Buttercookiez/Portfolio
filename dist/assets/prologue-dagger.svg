@@ -1,37 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 760" fill="none" class="dagger-svg" aria-hidden="true" focusable="false"><defs>
-  <linearGradient id="pd-steel-left" x1="0" x2="1"><stop stop-color="#26363e"/><stop offset=".42" stop-color="#778c91"/><stop offset=".68" stop-color="#bdc8c7"/><stop offset="1" stop-color="#526970"/></linearGradient>
-  <linearGradient id="pd-steel-right" x1="0" x2="1"><stop stop-color="#d5dfdb"/><stop offset=".2" stop-color="#8eaaae"/><stop offset=".65" stop-color="#d8dfd7"/><stop offset="1" stop-color="#617b84"/></linearGradient>
-  <linearGradient id="pd-edge" x1="0" x2="1"><stop stop-color="#e1e5d7"/><stop offset=".45" stop-color="#8faaa9"/><stop offset="1" stop-color="#dce4d9"/></linearGradient>
-  <linearGradient id="pd-bronze" x1="0" x2="1"><stop stop-color="#293432"/><stop offset=".23" stop-color="#998969"/><stop offset=".49" stop-color="#c1b18b"/><stop offset=".7" stop-color="#716c56"/><stop offset="1" stop-color="#303d3c"/></linearGradient>
-  <linearGradient id="pd-leather" x1="0" x2="1"><stop stop-color="#101b20"/><stop offset=".28" stop-color="#3b3d32"/><stop offset=".57" stop-color="#575244"/><stop offset=".85" stop-color="#263036"/><stop offset="1" stop-color="#111f25"/></linearGradient>
-  <linearGradient id="pd-sheen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e8ece1" stop-opacity="0"/><stop offset=".48" stop-color="#f5f4e6" stop-opacity=".15"/><stop offset=".55" stop-color="#f5f4e6" stop-opacity=".6"/><stop offset=".62" stop-color="#f5f4e6" stop-opacity="0"/></linearGradient>
-  <clipPath id="pd-blade-clip"><path d="M83 229H157L150 573 120 721 90 573Z"/></clipPath>
-  <clipPath id="pd-memory-clip"><path d="M92 251H148L143 567 120 687 97 567Z"/></clipPath>
-</defs><g class="dagger-blade">
-  <path d="M79 218H161L154 583 120 739 86 583Z" fill="#192c33" stroke="#718c8e" stroke-width="1.6"/>
-  <path d="M83 224H120V728L91 580Z" fill="url(#pd-steel-left)"/>
-  <path d="M120 224H157L149 580 120 728Z" fill="url(#pd-steel-right)"/>
-  <path d="M83 225 91 580 120 729 86 582 79 220Z" fill="url(#pd-edge)" opacity=".85"/>
-  <path d="M157 225 149 580 120 729 154 582 161 220Z" fill="#dbe4dc" opacity=".72"/>
-  <path d="M120 228V720" stroke="#e3e8db" stroke-width="1" opacity=".42"/>
-  <path d="m99 337 4 47m-1 30 3 15m32-109-2 54m-2 44 2 19m-29 65 4 42m25-29-2 29m-15 35 1 48" fill="none" stroke="#e5e8db" stroke-width=".55" opacity=".25"/>
-</g><g class="blade-engraving" fill="none" stroke="#33494c" opacity=".8">
-  <path d="M104 275h12v20c0 9-11 10-12 2m22 7v-29h13m-13 13h10" stroke-width="2.2"/>
-  <path d="M105 316h30m-26 5h22" stroke-width=".7"/>
-</g><g class="dagger-hilt">
-  <path d="M104 27 100 48 102 172 98 197H142L138 172 140 48 136 27Z" fill="url(#pd-leather)" stroke="#17262b" stroke-width="2"/>
-  <g fill="none" stroke="#a49979" stroke-width="1.2" opacity=".45">
-    <path d="m101 49 37 14m-37 5 37 14m-36 5 36 14m-36 5 36 14m-36 5 36 14m-36 5 36 14m-36 5 36 14m-37 5 38 14"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 760" fill="none">
+  <defs>
+    <linearGradient id="steel" x1="0" x2="1" y1="0" y2=".14">
+      <stop stop-color="#bac1b9"/>
+      <stop offset=".27" stop-color="#536265"/>
+      <stop offset=".52" stop-color="#c2cac1"/>
+      <stop offset=".54" stop-color="#e6e7d8"/>
+      <stop offset=".7" stop-color="#84938f"/>
+      <stop offset="1" stop-color="#334044"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" x2=".22" y1="0" y2="1">
+      <stop stop-color="#adbab5"/>
+      <stop offset=".35" stop-color="#e9eddf"/>
+      <stop offset=".66" stop-color="#849999"/>
+      <stop offset="1" stop-color="#e4e8da"/>
+    </linearGradient>
+    <linearGradient id="guard" x1="0" x2=".96" y1=".1" y2=".9">
+      <stop stop-color="#211e19"/>
+      <stop offset=".28" stop-color="#8d7750"/>
+      <stop offset=".5" stop-color="#ad9b76"/>
+      <stop offset=".72" stop-color="#69583c"/>
+      <stop offset="1" stop-color="#242821"/>
+    </linearGradient>
+    <linearGradient id="grip" x1="0" x2="1" y1="0" y2=".04">
+      <stop stop-color="#151918"/>
+      <stop offset=".4" stop-color="#474235"/>
+      <stop offset=".68" stop-color="#5c4f3c"/>
+      <stop offset="1" stop-color="#1a1f1b"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#e4e8db" stop-opacity="0"/>
+      <stop offset=".34" stop-color="#a7b6b3" stop-opacity=".52"/>
+      <stop offset=".49" stop-color="#f1efe0" stop-opacity=".94"/>
+      <stop offset=".5" stop-color="#819895" stop-opacity=".53"/>
+      <stop offset="1" stop-color="#d6e1d9" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="facet">
+      <path d="M74 223 169 228 161 438 150 561 120 729 88 572 79 414Z"/>
+    </clipPath>
+    <clipPath id="leather">
+      <path d="m99 47 42-1-3 51 5 82-6 13h-33l-7-13 5-82Z"/>
+    </clipPath>
+    <pattern id="hatching" width="8" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(26)">
+      <path d="M1 0v9m3-9v9" stroke="#172423" stroke-opacity=".32" stroke-width=".65"/>
+      <path d="M6 0v9" stroke="#ecede0" stroke-opacity=".18" stroke-width=".7"/>
+    </pattern>
+  </defs>
+
+  <g id="dagger-art" stroke-linejoin="round">
+    <!-- Forged shoulders, two bevels and an offset ridge. -->
+    <path d="m63 207 116 4-6 225-12 128-41 175-43-166-11-156Z" fill="#111c1f" stroke="#121919" stroke-width="4"/>
+    <path d="m66 213 109 4-7 219-12 126-36 177-40-167-10-155Z" fill="url(#edge)"/>
+    <path d="m74 223 95 5-8 210-11 123-30 168-32-157-9-158Z" fill="url(#steel)" stroke="#233235" stroke-width="1.8"/>
+    <path d="m74 223 49 3-2 494-33-148-9-158Z" fill="#142326" opacity=".34"/>
+    <path d="m72 231 7 214 9 117 32 170" stroke="#eceddf" stroke-opacity=".64" stroke-width="1.6"/>
+    <path d="m172 241-5 176-8 88m-2 27-4 30-20 95" stroke="#fbfae9" stroke-opacity=".8" stroke-width="1.8"/>
+
+    <!-- A distant shore and waterline stretch along the polish of the blade. -->
+    <g clip-path="url(#facet)">
+      <path d="M69 268h110v344H69z" fill="url(#sky)"/>
+      <path d="m70 433 10-12 9-3 10-20 5-5 11 9 9 14 13 3 14-12 8-18 19-25v94H69Z" fill="#334345" opacity=".75"/>
+      <path d="m71 434 9-10 9-4 10-19 5-5 10 9m31 12 8-7 8-18 17-24" stroke="#bfcac2" stroke-opacity=".76" stroke-width="1.3"/>
+      <path d="m65 448 26-5 28 4 24-4 37 2m-111 12 31-2 22 3 39-6 18 2m-105 13 32-2m15 11 38-6 17 1m-93 11 27-1m23 4 24-3m-74 10 37 1 42-6m-62 16 24 2 36-8m-64 20 35-2m-27 16 41-4m-23 14 21-2m-32 18 21-1" stroke="#e7ebe1" stroke-opacity=".68" stroke-width="1.1"/>
+      <path d="m76 457 38 5 32-4 35-2m-107 26 41 1 22-5 43-3m-96 15 35 4 46-3m-68 37 23 4 43-9m-56 24 38-5" stroke="#2e4648" stroke-opacity=".62" stroke-width="1.6"/>
+      <path d="m132 446 8 1 10-4-4 5-12 2Zm8-2 2-9 4 7Z" fill="#203235"/>
+      <path d="M66 246h111v483H66z" fill="url(#hatching)"/>
+      <path d="m66 342 109-32v7L66 353Zm0 8 109-32v2L66 356Zm0 158 109-34v3L66 514Z" fill="#edf0e3" opacity=".39"/>
+      <path d="m91 255 2 67m-8 62 5 36m-1 33 3 22m9 67 11 59m31-349-3 75m12 45-2 35m-9 95-5 50m-2 21-4 42m-24-30 7 46" stroke="#e5e7d9" stroke-opacity=".48" stroke-width=".9"/>
+      <path d="m78 270 6 37m2 92 4 40m55-170-3 23m10 41-3 52m-38 153 5 44m22-34-7 50" stroke="#18272c" stroke-opacity=".64" stroke-width="1.1"/>
+      <path d="m123 228-2 491" stroke="#f7f7e7" stroke-opacity=".54" stroke-width="1.6"/>
+    </g>
+
+    <!-- A small maker's mark near the guard. -->
+    <g stroke="#1c3031" stroke-opacity=".9">
+      <path d="M94 263h12v21c0 9-9 11-13 5m38 6v-32h15m-15 13h11" stroke-width="2.1"/>
+      <path d="m96 305 22 4 26-3m-46 4 20 5 24-4" stroke-width=".9"/>
+    </g>
+
+    <!-- Worn leather wrap, nicks in the iron and restrained brass accents. -->
+    <path d="m99 47 42-1-3 51 5 82-6 13h-33l-7-13 5-82Z" fill="url(#grip)" stroke="#131b1a" stroke-width="4"/>
+    <g clip-path="url(#leather)">
+      <path d="m94 48 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13" stroke="#111616" stroke-width="4.8"/>
+      <path d="m94 51 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13m-52 4 52 13" stroke="#b39b75" stroke-opacity=".7" stroke-width="1.35"/>
+      <path d="M95 48h54v140H95z" fill="url(#hatching)" opacity=".65"/>
+    </g>
+    <path d="m95 173 51 3 1 17-53-2Z" fill="url(#guard)" stroke="#222821" stroke-width="2.6"/>
+    <path d="m98 178 45 3m-44 3 43 3" stroke="#e4d0a3" stroke-opacity=".68" stroke-width="1.1"/>
+    <path d="m32 188 9-7 19 12 40 3 8-7 28 1 8 7 34-2 18-11 12 7-6 20-18 10-42-4-6 12-32-1-8-11-40 2-20-10Z" fill="url(#guard)" stroke="#19201d" stroke-width="3.6"/>
+    <path d="m33 193 9-7 17 12 43 3 8-8 24 1 9 8 37-2 16-10 8 4m-164 7 17 10 43-1 7 11 27 1 6-10 43 2 15-8" stroke="#e1d0a7" stroke-opacity=".76" stroke-width="1.5"/>
+    <path d="m48 195 3 7m8-3 3 9m10-9 3 10m11-9 4 10m61-9-3 10m17-10-3 11m16-12-2 11m14-15-3 11" stroke="#222a22" stroke-opacity=".78" stroke-width="1.25"/>
+    <path d="m111 204 10-7 11 8-12 8Z" fill="#374440" stroke="#c2b186" stroke-width="1.5"/>
+    <path d="m120 200 6 5-6 5-5-5Z" fill="#ac9d79"/>
+    <path d="m103 14 15-9 16 4 12 14-3 22-10 10-27-3-12-17 2-13Z" fill="url(#guard)" stroke="#1a221f" stroke-width="3.2"/>
+    <path d="m102 23 16-12 13 4 9 12-3 15-9 7-19-4-10-13Z" stroke="#e0cea3" stroke-opacity=".72" stroke-width="1.3"/>
+    <path d="m120 19 9 11-9 10-9-11Z" fill="#273838" stroke="#c6b88f" stroke-width="1.3"/>
+    <path d="m120 23 4 6-4 6-4-6Z" fill="#b8a784"/>
+    <path d="m101 43 9 5 17 3m-23-31 9-7m20 25 2-6" stroke="#f4dfb2" stroke-opacity=".6" stroke-width="1.15"/>
   </g>
-  <path d="M106 39 108 183M135 41l-3 141" fill="none" stroke="#d2c4a4" stroke-width=".8" opacity=".28"/>
-  <path d="M98 177H142L146 197H94Z" fill="url(#pd-bronze)" stroke="#243332" stroke-width="1.5"/>
-  <path d="M96 184H144M95 192h50" stroke="#e0d4ae" stroke-width=".7" opacity=".45"/>
-  <path d="M42 194 58 198 91 203H149L182 198 198 194 194 210 180 216 149 215 145 225H95L91 215 60 216 46 210Z" fill="url(#pd-bronze)" stroke="#24373a" stroke-width="2"/>
-  <path d="m46 198 17 5 31 5h52l31-5 17-5" fill="none" stroke="#e3d6b4" stroke-width="1.2" opacity=".63"/>
-  <path d="M103 207h34v20h-34Z" fill="#566b6e" stroke="#c0c7af" stroke-width=".6"/>
-  <path d="m109 211 11 6 11-6m-22 10 11-6 11 6" fill="none" stroke="#aeb7a1" stroke-width=".7" opacity=".6"/>
-  <path d="M101 9 113 3H127L139 9 145 28 137 42H103L95 28Z" fill="url(#pd-bronze)" stroke="#233738" stroke-width="2"/>
-  <path d="m103 12 13-5h8l13 5 4 15-7 10h-28l-7-10Z" fill="none" stroke="#d8ccaa" stroke-width=".9" opacity=".58"/>
-  <circle cx="120" cy="23" r="5" fill="#354b4f" stroke="#b7b496" stroke-width="1"/>
-  <path d="m117 23 3-3 3 3-3 3Z" fill="#b3aa88"/>
-</g><g clip-path="url(#pd-blade-clip)"><path d="M67 220H176V738H67Z" fill="url(#pd-sheen)" opacity=".38"/><path class="blade-glint" d="m53 242 132-73v24L53 267Z" fill="#f2f2df" opacity=".72"/></g></svg>
+</svg>
