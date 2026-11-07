@@ -1,0 +1,115 @@
+/* Three full-size plates share the same image coordinates. Their small overlaps
+   keep diagonal joins invisible once the plates settle into place. */
+.project-memory {
+  position: relative;
+  aspect-ratio: 1265 / 712;
+  isolation: isolate;
+}
+
+.project-memory::before {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  opacity: var(--frame-opacity, 1);
+  content: "";
+  pointer-events: none;
+  border: 1px solid #a6b3ae42;
+  box-shadow: 0 18px 48px #02070a33;
+}
+
+.memory-slice {
+  position: absolute;
+  inset: 0;
+  transform-origin: center;
+}
+
+.project-scene .scene-art .memory-slice > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  filter: none;
+}
+
+.memory-slice:nth-child(n+2),
+.memory-register {
+  display: none;
+}
+
+.story-enhanced .project-art:has(.project-memory),
+.story-enhanced #koki .project-art:has(.project-memory) {
+  overflow: visible;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.story-enhanced .project-memory > .memory-slice {
+  display: block;
+}
+
+.story-enhanced .memory-slice:nth-child(1) {
+  clip-path: polygon(0 0, 36.6% 0, 28.6% 100%, 0 100%);
+  transform-origin: 16% 50%;
+}
+
+.story-enhanced .memory-slice:nth-child(2) {
+  clip-path: polygon(36% 0, 70.6% 0, 61.6% 100%, 28% 100%);
+  transform-origin: 49% 50%;
+}
+
+.story-enhanced .memory-slice:nth-child(3) {
+  clip-path: polygon(70% 0, 100% 0, 100% 100%, 61% 100%);
+  transform-origin: 83% 50%;
+}
+
+.story-enhanced .memory-register {
+  --register-ink: #b9c9bd;
+  position: absolute;
+  z-index: 3;
+  inset: -10px;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(var(--register-ink), var(--register-ink)) left top / 17px 1px,
+    linear-gradient(var(--register-ink), var(--register-ink)) left top / 1px 17px,
+    linear-gradient(var(--register-ink), var(--register-ink)) right bottom / 17px 1px,
+    linear-gradient(var(--register-ink), var(--register-ink)) right bottom / 1px 17px;
+  background-repeat: no-repeat;
+}
+
+#koki .memory-register {
+  --register-ink: #536762;
+}
+
+.memory-register[data-index]::after {
+  position: absolute;
+  right: 7%;
+  bottom: 7%;
+  content: attr(data-index);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--register-ink);
+  font: 800 clamp(38px, 8vw, 112px) / .85 Kinetic, Impact, sans-serif;
+  letter-spacing: -.06em;
+}
+
+@media (max-width: 760px) {
+  .story-enhanced .memory-register {
+    inset: -6px;
+  }
+}
+
+@media print {
+  .story-enhanced .project-memory > .memory-slice:first-child {
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .story-enhanced .project-memory > .memory-slice:nth-child(n+2),
+  .story-enhanced .memory-register {
+    display: none;
+  }
+}

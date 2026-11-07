@@ -50,6 +50,54 @@ body.story-enhanced .dagger-stage.has-dagger {
   filter: drop-shadow(-2px 4px 3px #10171466);
 }
 
+.dagger-spin,
+.dagger-face,
+.dagger-edge,
+.dagger-memories,
+.dagger-memory-plate {
+  position: absolute;
+  inset: 0;
+}
+
+.dagger-edge {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(.10);
+  opacity: 0;
+  filter: brightness(1.45);
+}
+
+/* The bevel remains visible. Only the inset facet carries the project image. */
+.dagger-memories {
+  inset: 29.35% 29.65% 4.05% 30.8%;
+  clip-path: polygon(0 0, 100% 1%, 92% 43%, 80% 67%, 48% 100%, 15% 69%, 5% 39%);
+  mask-image: linear-gradient(180deg, transparent, #000 12% 71%, transparent 96%);
+}
+
+.dagger-memory-plate {
+  opacity: 0;
+  background: #4a6160;
+}
+
+.dagger-memory-plate img {
+  position: absolute;
+  inset: 7% 0 auto;
+  width: 100%;
+  height: 66%;
+  object-fit: fill;
+  mask-image: linear-gradient(transparent, #000 12% 76%, transparent);
+  filter: saturate(.68) contrast(1.12) brightness(1.12);
+}
+
+.dagger-memory-plate::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, #f3d99bbb, transparent 12% 82%, #f5e1ab98),
+    linear-gradient(163deg, transparent 29%, #fef8db85 30%, #e6f1dc30 31%, transparent 34% 68%, #e6f1dc55 70%, transparent 75%);
+}
+
 .dagger-ground {
   position: absolute;
   top: var(--dagger-ground-y);

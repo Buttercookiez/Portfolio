@@ -225,25 +225,48 @@
       { yPercent: 0, opacity: 1, clipPath: 'inset(0% 0% 0% 0%)', duration: .17, ease: 'power3.out' }, .77);
   }
 
-  function revealTitle(timeline, title) {
+  function revealTitle(timeline, title, start = titleRevealStart) {
     const lines = title?.matches('.kinetic-heading,.kinetic-name') ? $$('[data-split]', title) : [];
     if (!lines.length) {
-      revealInk(timeline, title, titleRevealStart, .17);
+      revealInk(timeline, title, start, .17);
       return;
     }
     lines.forEach((line, index) => {
       timeline.fromTo($$('.type-char', line),
         { yPercent: 105, rotationX: 35, opacity: 0, transformPerspective: 700, transformOrigin: '50% 100%' },
         { yPercent: 0, rotationX: 0, opacity: 1, duration: .15, stagger: { amount: .065 }, ease: 'power3.out' },
-        titleRevealStart + index * .045);
+        start + index * .045);
     });
+  }
+
+  function assembleProject(timeline, memory, direction) {
+    const slices = $$('.memory-slice', memory);
+    const entrances = [
+      { xPercent: -12 * direction, yPercent: 17, rotation: -6 * direction },
+      { xPercent: 1 * direction, yPercent: -23, rotation: 4 * direction },
+      { xPercent: 11 * direction, yPercent: 15, rotation: 7 * direction }
+    ];
+    slices.forEach((slice, index) => {
+      timeline.fromTo(slice, { ...entrances[index], opacity: 0 },
+        { xPercent: 0, yPercent: 0, rotation: 0, opacity: 1, duration: .23, ease: 'power3.out' },
+        .26 + index * .054);
+    });
+
+    const register = $('.memory-register', memory);
+    timeline.fromTo(register,
+      { opacity: 0, scale: 1.09, xPercent: 4 * direction },
+      { opacity: .78, scale: 1, xPercent: 0, duration: .12, ease: 'power2.out' }, .19);
+    timeline.to(register, { opacity: 0, duration: .19, ease: 'power1.in' }, .40);
+    timeline.fromTo(memory, { '--frame-opacity': 0 },
+      { '--frame-opacity': 1, duration: .15 }, .46);
+    timeline.fromTo(memory.previousElementSibling,
+      { opacity: 0, y: -8 },
+      { opacity: 1, y: 0, duration: .14, ease: 'power2.out' }, .46);
   }
 
   function createSceneTimeline(scene, index) {
     const intro = index === 0;
-    const finalScene = index === scenes.length - 1;
-    const art = $('.scene-art', scene);
-    const image = $('.scene-art img', scene);
+    const memory = $('.project-memory', scene);
     const title = $('.scene-title', scene);
     const kicker = $('.scene-kicker', scene);
     const description = $('.scene-description', scene);
@@ -269,20 +292,14 @@
       animatePrelude(timeline, scene);
       if (cue) timeline.to(cue, { opacity: 0, y: -5, duration: .08 }, .035);
     } else {
-      revealInk(timeline, kicker, .03, .12);
-      revealTitle(timeline, title);
-      revealInk(timeline, description, .29, .15);
-      revealInk(timeline, actions, .44, .14);
-      revealInk(timeline, note, .54, .1);
+      revealInk(timeline, kicker, memory ? .23 : .03, .12);
+      revealTitle(timeline, title, memory ? .30 : titleRevealStart);
+      revealInk(timeline, description, memory ? .42 : .29, .15);
+      revealInk(timeline, actions, memory ? .50 : .44, .14);
+      revealInk(timeline, note, memory ? .55 : .54, .1);
       if (surname) revealInk(timeline, surname, .06, .12);
-      if (art) timeline.fromTo(art,
-        { clipPath: 'inset(0% 100% 0% 0%)', opacity: .35 },
-        { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: .27, ease: 'power2.inOut' }, .02);
-      if (image) timeline.fromTo(image,
-        { scale: 1.045, xPercent: 1 },
-        { scale: 1, xPercent: 0, duration: .48, ease: 'power1.out' }, .03);
+      if (memory) assembleProject(timeline, memory, index === 3 ? -1 : 1);
       if (mark) timeline.fromTo(mark, { opacity: 0, x: 22 }, { opacity: .12, x: 0, duration: .35 }, .08);
-      if (!finalScene && art) timeline.to(art, { y: -9, opacity: .6, duration: .13, ease: 'power1.inOut' }, .87);
     }
     if (line) timeline.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: .8 }, .02);
     records.push({ scene, timeline, trigger: timeline.scrollTrigger });
@@ -312,7 +329,8 @@
           scenes.forEach(createSceneTimeline);
           const identity = records.find(record => record.scene.id === 'about');
           const contact = records.find(record => record.scene.id === 'contact');
-          if (identity && contact) window.PrologueDagger?.connect?.(gsap, identity.trigger, contact.trigger, titleRevealStart);
+          const projects = records.filter(({ scene }) => scene.hasAttribute('data-project-scene'));
+          if (identity && contact) window.PrologueDagger?.connect?.(gsap, identity.trigger, contact.trigger, titleRevealStart, projects);
         });
       } catch {
         readerContext?.revert();
