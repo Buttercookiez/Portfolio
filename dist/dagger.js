@@ -112,8 +112,10 @@
     landing.to(impact, { opacity: 0, duration: .65, ease: 'power1.out' }, .3);
 
     const pose = (time, yaw, roll, x) => ({ time, yaw, roll, x });
-    const lastAngle = projects.length * 180;
-    let turns = [pose(0, -58, -20, -.14), pose(1, lastAngle, 0, 0)];
+    const released = pose(0, -48, -14, .76);
+    const fullRoll = 360;
+    const lastAngle = (projects.length + 1) * 180;
+    let turns = [released, pose(1, lastAngle, fullRoll, 0)];
     let windows = [];
     let stageWidth = 0;
     let stageHeight = 0;
@@ -138,7 +140,7 @@
       const flightHeight = descent * (.53 + .47 * descent);
       shiftX(gsap.utils.interpolate(safeX, x, unit((descent - .92) / .08)));
       shiftY(gsap.utils.interpolate(stageHeight * .045, groundY, flightHeight));
-      rollBlade(roll);
+      rollBlade(roll % fullRoll);
       showBlade(unit(descent / .065));
       revealBlade(descent > 0 ? 'visible' : 'hidden');
       rotate(yaw);
@@ -185,21 +187,20 @@
           bladeWidth = fall.offsetWidth;
           bladeHeight = fall.offsetHeight;
           groundY = ground.offsetTop - fall.offsetTop - bladeHeight * tipRatio;
-          turns = [pose(0, -58, -20, -.14)];
+          // Hold beside the name, then travel across the screen into the left rail.
+          turns = [released, pose(scrollToTime(at(identity, .73)), -12, 10, .70)];
           windows = projects.map((chapter, index) => {
-            const broadside = index * 180;
-            const roll = index === 1 ? 360 : 0;
+            const broadside = (index + 1) * 180;
             const arrival = chapterTime(chapter, .16);
             if (index > 0) {
               const departure = turns[turns.length - 1];
               const seam = (departure.time + arrival) / 2;
-              const midRoll = (departure.roll + roll) / 2;
-              turns.push(pose(seam, broadside - 84, midRoll, index === 1 ? -.22 : -.17));
+              turns.push(pose(seam, broadside - 84, fullRoll + 15, .018));
             }
             turns.push(
-              pose(arrival, broadside - 18, roll + (index === 1 ? -9 : 7), index === 1 ? -.052 : .004),
-              pose(chapterTime(chapter, .49), broadside + 5, roll + (index === 1 ? 5 : -4), .018),
-              pose(chapterTime(chapter, .72), broadside + 19, roll + (index === 1 ? 1 : 8), -.015)
+              pose(arrival, broadside - 18, fullRoll + 5, .014),
+              pose(chapterTime(chapter, .49), broadside + 5, fullRoll - 3, .002),
+              pose(chapterTime(chapter, .72), broadside + 19, fullRoll + 7, .009)
             );
             return {
               start: chapterTime(chapter, .16),
@@ -208,7 +209,7 @@
               end: chapterTime(chapter, .78)
             };
           });
-          turns.push(pose(landingPoint, lastAngle, 0, 0));
+          turns.push(pose(landingPoint, lastAngle, fullRoll, 0));
           render();
         }
       }

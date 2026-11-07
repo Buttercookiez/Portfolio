@@ -293,7 +293,8 @@
     timeline.to(register, { opacity: 0, duration: .22, ease: 'power1.in' }, .32);
     timeline.fromTo(memory, { '--frame-opacity': 0 },
       { '--frame-opacity': 1, duration: .16 }, .36);
-    timeline.fromTo(memory.previousElementSibling,
+    const frameLabels = [memory.previousElementSibling, memory.nextElementSibling].filter(Boolean);
+    timeline.fromTo(frameLabels,
       { opacity: 0, y: -8 },
       { opacity: 1, y: 0, duration: .15, ease: 'power2.out' }, .37);
     // Replace the aligned fragments with one image to avoid seams at small sizes.

@@ -1,3 +1,278 @@
+.project-scene {
+  --work-base: #151f1c;
+  --work-halo: #344638;
+  --work-ink: #f3f1e9;
+  --work-text: #c7cec1;
+  --work-accent: #c4d599;
+  --work-action-ink: #202a1b;
+  --work-line: #b4c4ae50;
+  --work-bar: #253128;
+  background: var(--work-base);
+}
+
+#koki {
+  --work-base: #e4ded1;
+  --work-halo: #f6efde;
+  --work-ink: #25332d;
+  --work-text: #445149;
+  --work-accent: #3b584b;
+  --work-action-ink: #f5f2e7;
+  --work-line: #53655359;
+  --work-bar: #303c33;
+}
+
+#monovault {
+  --work-base: #171f2b;
+  --work-halo: #304057;
+  --work-ink: #edf1f3;
+  --work-text: #c4cdd9;
+  --work-accent: #b8d0ea;
+  --work-action-ink: #192634;
+  --work-line: #bdcee34d;
+  --work-bar: #29384a;
+}
+
+.project-scene .scene-frame,
+#koki .scene-frame,
+#monovault .scene-frame {
+  color: var(--work-ink);
+  background: radial-gradient(ellipse at 85% 26%, var(--work-halo), transparent 64%), var(--work-base);
+}
+
+.project-scene .scene-frame .project-layout,
+#koki .scene-frame .project-layout {
+  width: min(1240px, 88%);
+  grid-template-areas: "mast mast" "preview copy";
+  grid-template-columns: minmax(0, 1.72fr) minmax(0, 1fr);
+  column-gap: clamp(18px, 3vw, 48px);
+  row-gap: clamp(18px, 3.8svh, 40px);
+}
+
+#koki .scene-frame .project-layout {
+  grid-template-areas: "mast mast" "copy preview";
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.72fr);
+}
+
+.story-enhanced .project-scene .scene-frame {
+  padding-block: clamp(16px, 3svh, 36px) clamp(36px, 6svh, 70px);
+}
+
+.story-enhanced .project-scene .project-layout,
+.story-enhanced #koki .project-layout {
+  width: min(1240px, 74%);
+  margin-inline: 21% auto;
+}
+
+.project-scene .project-masthead,
+#koki .project-masthead {
+  grid-area: mast;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 0 10px;
+  margin: 0;
+  border-bottom: 1px solid var(--work-line);
+  color: var(--work-text);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .19em;
+}
+
+.project-folio {
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .09em;
+}
+
+.project-folio strong {
+  color: var(--work-accent);
+  font-size: 17px;
+}
+
+.project-scene .scene-frame .project-art,
+#koki .scene-frame .project-art {
+  grid-area: preview;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+.project-art .browser-chrome {
+  height: 29px;
+  padding-inline: 11px;
+  border: 1px solid #c2cbb631;
+  border-radius: 5px 5px 0 0;
+  background: var(--work-bar);
+  color: #e0e7dc;
+  font-size: clamp(7px, 1vw, 10px);
+}
+
+.project-art .browser-dots {
+  background: #b4c4ae95;
+  box-shadow: 7px 0 #b4c4ae78, 14px 0 #b4c4ae58;
+  margin-right: 14px;
+}
+
+.project-caption {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+  color: var(--work-text);
+  font: 9px/1.4 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .11em;
+}
+
+.project-scene .project-copy,
+#koki .project-copy {
+  grid-area: copy;
+  padding: 0;
+}
+
+.project-scene .scene-frame .kinetic-heading {
+  font-size: clamp(40px, 5.6vw, 86px);
+  line-height: .91;
+}
+
+.project-scene .kinetic-heading em,
+#koki .kinetic-heading em,
+#monovault .kinetic-heading em {
+  color: var(--work-accent);
+}
+
+.project-scene .project-copy .scene-description,
+#koki .project-copy .scene-description {
+  max-width: 28ch;
+  margin-top: clamp(10px, 2.3svh, 23px);
+  color: var(--work-text);
+  font-size: clamp(12px, 1.2vw, 16px);
+  line-height: 1.55;
+}
+
+.project-scene .project-copy .project-note,
+#koki .project-copy .project-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 13px;
+  color: var(--work-accent);
+  font: 600 8px/1.3 var(--body);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.project-note span {
+  padding: 5px 6px;
+  border: 1px solid var(--work-line);
+  border-radius: 2px;
+}
+
+.project-scene .project-copy .scene-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: clamp(15px, 2.5svh, 26px);
+}
+
+.project-scene .project-copy .project-visit,
+.project-scene .project-copy .project-details,
+#koki .project-copy .project-visit,
+#koki .project-copy .project-details {
+  justify-content: space-between;
+  gap: 7px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--work-line);
+  border-radius: 3px;
+  color: var(--work-ink);
+  font: 600 11px/1.25 var(--body);
+  transition: background .18s, color .18s, border-color .18s;
+}
+
+.project-scene .project-copy .project-visit,
+#koki .project-copy .project-visit {
+  border-color: var(--work-accent);
+  background: var(--work-accent);
+  color: var(--work-action-ink);
+}
+
+.project-scene .project-copy .project-visit:hover,
+#koki .project-copy .project-visit:hover {
+  background: var(--work-ink);
+  border-color: var(--work-ink);
+}
+
+.project-scene .project-copy .project-details:hover,
+#koki .project-copy .project-details:hover {
+  border-color: var(--work-accent);
+  color: var(--work-accent);
+}
+
+.project-scene .project-copy .scene-actions :focus-visible {
+  outline-color: var(--work-accent);
+  outline-offset: 3px;
+}
+
+.project-scene .scene-line,
+#koki .scene-line {
+  left: 6%;
+  width: 88%;
+  background: var(--work-line);
+}
+
+.story-enhanced .project-scene .scene-line,
+.story-enhanced #koki .scene-line {
+  left: 21%;
+  width: min(1240px, 74%);
+  bottom: clamp(18px, 3.8svh, 40px);
+}
+
+@media (max-width: 760px) {
+  .story-enhanced .project-scene .project-layout,
+  .story-enhanced #koki .project-layout {
+    width: 72%;
+    margin-left: 23%;
+  }
+
+  .story-enhanced .project-scene .scene-line,
+  .story-enhanced #koki .scene-line { left: 23%; width: 72%; }
+  .project-scene .scene-frame .kinetic-heading { font-size: clamp(37px, 5.5vw, 43px); }
+}
+
+@media (max-width: 620px) {
+  .project-scene .scene-frame .project-layout,
+  #koki .scene-frame .project-layout {
+    grid-template-areas: "mast" "preview" "copy";
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(13px, 2.5svh, 21px);
+  }
+
+  .project-scene .scene-frame .kinetic-heading { font-size: clamp(37px, 13vw, 68px); }
+  .project-art .browser-chrome { height: 25px; }
+}
+
+@media (max-width: 620px) and (max-height: 700px) {
+  .story-enhanced .project-scene .scene-frame .project-art {
+    max-width: calc((100svh - 447px) * 1.776);
+  }
+
+  .story-enhanced .project-scene .scene-frame .kinetic-heading {
+    font-size: clamp(35px, 11vw, 51px);
+  }
+
+  .project-scene .project-copy .project-note { margin-top: 9px; }
+  .project-scene .project-copy .scene-actions { margin-top: 11px; }
+}
+
 /* The plates share image coordinates and overlap slightly to hide the joins
    when they settle into a single preview. */
 .project-memory {

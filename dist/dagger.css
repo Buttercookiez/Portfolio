@@ -5,7 +5,7 @@
 }
 
 body.story-enhanced .dagger-stage.has-dagger {
-  --dagger-x: 88%;
+  --dagger-x: 12%;
   --dagger-ground-y: 78%;
   --dagger-size: clamp(225px, 39svh, 420px);
   --dagger-width: calc(var(--dagger-size) * .31578947);
@@ -111,21 +111,21 @@ body.story-enhanced .dagger-stage.has-dagger {
 .dagger-shadow {
   position: absolute;
   top: calc(var(--dagger-shadow-height) * -.5);
-  left: calc(var(--dagger-shadow-width) * -.76);
+  left: calc(var(--dagger-shadow-width) * -.24);
   width: var(--dagger-shadow-width);
   height: var(--dagger-shadow-height);
   opacity: 0;
-  transform-origin: 76% 50%;
-  background: radial-gradient(ellipse at 72% 50%, #0b1416c4 4%, #0e18197a 27%, #19222432 47%, transparent 69%);
-  mask-image: linear-gradient(90deg, #000 78%, transparent 100%);
+  transform-origin: 24% 50%;
+  background: radial-gradient(ellipse at 28% 50%, #0b1416c4 4%, #0e18197a 27%, #19222432 47%, transparent 69%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 22%);
 }
 
 .dagger-shadow::before {
   position: absolute;
-  inset: 2px 8% 3px 11%;
+  inset: 2px 11% 3px 8%;
   content: "";
   background: repeating-linear-gradient(161deg, #0a141a91 0 1px, transparent 1px 5px);
-  clip-path: polygon(0 62%, 42% 33%, 79% 29%, 100% 50%, 86% 78%, 48% 77%);
+  clip-path: polygon(0 50%, 21% 29%, 58% 33%, 100% 62%, 52% 77%, 14% 78%);
 }
 
 .dagger-shadow::after {
@@ -135,7 +135,7 @@ body.story-enhanced .dagger-stage.has-dagger {
   width: 88%;
   height: 1px;
   content: "";
-  background: linear-gradient(90deg, transparent, #17282870 44%, #253f3a96 78%, transparent);
+  background: linear-gradient(90deg, transparent, #253f3a96 22%, #17282870 56%, transparent);
 }
 
 /* The SVG point is at y=739 of 760. Use that point as the mirror hinge. */
@@ -170,9 +170,9 @@ body.story-enhanced .dagger-stage.has-dagger {
 
 @media (max-width: 760px) {
   body.story-enhanced .dagger-stage.has-dagger {
-    --dagger-x: 89%;
+    --dagger-x: 11.5%;
     --dagger-ground-y: 84%;
-    --dagger-size: clamp(130px, 23svh, 198px);
+    --dagger-size: clamp(128px, 22svh, 192px);
     --dagger-shadow-width: 120px;
     --dagger-shadow-height: 14px;
   }
